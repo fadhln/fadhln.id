@@ -1,0 +1,46 @@
+{
+  "$schema": "https://biomejs.dev/schemas/2.5.8/schema.json",
+  "formatter": {
+    "enabled": false
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "preset": "recommended",
+      "correctness": {
+        "noUnusedImports": "error",
+        "noUnusedVariables": "error"
+      },
+      "style": {
+        "useConsistentArrayType": "error",
+        "useTemplate": "error"
+      }
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "enabled": false
+    }
+  },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
+  },
+  "assist": {
+    "enabled": true,
+    "actions": {
+      "source": {
+        "organizeImports": "off"
+      }
+    }
+  },
+  "files": {
+    "includes": [
+      "**/src/**/*.{ts,tsx,js,jsx,json,css}",
+      "!**/.next",
+      "!**/node_modules",
+      "!**/pnpm-lock.yaml"
+    ]
+  }
+}

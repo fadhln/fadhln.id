@@ -23,17 +23,17 @@
   --color-brand-200: oklch(0.86 0.06 255);
   --color-brand-300: oklch(0.77 0.1 255);
   --color-brand-400: oklch(0.68 0.15 258);
-  --color-brand-500: oklch(0.60 0.19 261);
-  --color-brand-600: oklch(0.52 0.20 264);
+  --color-brand-500: oklch(0.6 0.19 261);
+  --color-brand-600: oklch(0.52 0.2 264);
   --color-brand-700: oklch(0.44 0.18 267);
   --color-brand-800: oklch(0.36 0.14 268);
-  --color-brand-900: oklch(0.28 0.10 270);
+  --color-brand-900: oklch(0.28 0.1 270);
   --color-brand-950: oklch(0.19 0.06 272);
 
   /* ── Accent (Amber) ──────────────────────────────── */
   --color-accent-50: oklch(0.98 0.02 90);
   --color-accent-100: oklch(0.95 0.05 90);
-  --color-accent-200: oklch(0.90 0.10 85);
+  --color-accent-200: oklch(0.9 0.1 85);
   --color-accent-300: oklch(0.84 0.13 80);
   --color-accent-400: oklch(0.78 0.15 75);
   --color-accent-500: oklch(0.72 0.16 70);
@@ -50,17 +50,17 @@
   /* ── State: Warning (Amber) ──────────────────────── */
   --color-warning-100: oklch(0.95 0.06 85);
   --color-warning-500: oklch(0.75 0.13 75);
-  --color-warning-700: oklch(0.55 0.10 68);
+  --color-warning-700: oklch(0.55 0.1 68);
 
   /* ── State: Error (Red) ──────────────────────────── */
   --color-error-100: oklch(0.95 0.03 20);
-  --color-error-500: oklch(0.58 0.20 25);
+  --color-error-500: oklch(0.58 0.2 25);
   --color-error-700: oklch(0.42 0.16 23);
 
   /* ── State: Info (Sky) ───────────────────────────── */
   --color-info-100: oklch(0.95 0.02 230);
   --color-info-500: oklch(0.65 0.12 235);
-  --color-info-700: oklch(0.47 0.10 238);
+  --color-info-700: oklch(0.47 0.1 238);
 
   /* ── Absolute ────────────────────────────────────── */
   --color-white: #ffffff;

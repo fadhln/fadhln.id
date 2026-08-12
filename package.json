@@ -5,7 +5,13 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "biome lint --write src",
+    "lint:check": "biome lint src",
+    "check": "biome lint src && prettier --check .",
+    "prepare": "husky"
   },
   "dependencies": {
     "next": "16.3.0",
@@ -13,13 +19,25 @@
     "react-dom": "19.2.8"
   },
   "devDependencies": {
+    "@biomejs/biome": "^2.5.8",
     "@tailwindcss/postcss": "^4",
+    "@trivago/prettier-plugin-sort-imports": "^6.0.2",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "babel-plugin-react-compiler": "1.0.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.3.0",
+    "prettier": "^3.9.6",
+    "prettier-plugin-tailwindcss": "^0.8.1",
     "tailwindcss": "^4",
     "typescript": "^5"
   },
-  "packageManager": "pnpm@11.15.1"
+  "packageManager": "pnpm@11.15.1",
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx,json,css,md}": [
+      "prettier --write",
+      "biome lint --write"
+    ]
+  }
 }
