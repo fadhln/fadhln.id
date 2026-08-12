@@ -1,0 +1,57 @@
+:root {
+  /* ── Surfaces ────────────────────────────────────── */
+  --color-surface: var(--color-white);
+  --color-surface-secondary: var(--color-neutral-50);
+  --color-surface-tertiary: var(--color-neutral-100);
+  --color-surface-elevated: var(--color-white);
+  --color-surface-overlay: rgba(0, 0, 0, 0.4);
+
+  /* ── Text ────────────────────────────────────────── */
+  --color-text-primary: var(--color-neutral-950);
+  --color-text-secondary: var(--color-neutral-600);
+  --color-text-tertiary: var(--color-neutral-400);
+  --color-text-inverse: var(--color-white);
+  --color-text-link: var(--color-brand-600);
+  --color-text-link-hover: var(--color-brand-500);
+
+  /* ── Brand / Actions ─────────────────────────────── */
+  --color-brand: var(--color-brand-600);
+  --color-brand-hover: var(--color-brand-500);
+  --color-brand-active: var(--color-brand-700);
+  --color-brand-subtle: var(--color-brand-50);
+  --color-brand-on-brand: var(--color-white);
+
+  /* ── Borders ─────────────────────────────────────── */
+  --color-border: var(--color-neutral-200);
+  --color-border-strong: var(--color-neutral-300);
+  --color-border-hover: var(--color-neutral-400);
+
+  /* ── State: Success ──────────────────────────────── */
+  --color-success: var(--color-success-500);
+  --color-success-subtle: var(--color-success-100);
+  --color-success-text: var(--color-success-700);
+
+  /* ── State: Warning ──────────────────────────────── */
+  --color-warning: var(--color-warning-500);
+  --color-warning-subtle: var(--color-warning-100);
+  --color-warning-text: var(--color-warning-700);
+
+  /* ── State: Error ────────────────────────────────── */
+  --color-error: var(--color-error-500);
+  --color-error-subtle: var(--color-error-100);
+  --color-error-text: var(--color-error-700);
+
+  /* ── State: Info ─────────────────────────────────── */
+  --color-info: var(--color-info-500);
+  --color-info-subtle: var(--color-info-100);
+  --color-info-text: var(--color-info-700);
+
+  /* ── Interactive ─────────────────────────────────── */
+  --color-interactive-hover: var(--color-neutral-100);
+  --color-interactive-active: var(--color-neutral-200);
+
+  /* ── Misc ────────────────────────────────────────── */
+  --color-code-bg: rgba(0, 0, 0, 0.06);
+  --color-selection-bg: var(--color-brand-200);
+  --color-selection-text: var(--color-neutral-950);
+}
