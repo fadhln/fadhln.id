@@ -18,17 +18,17 @@
   --color-neutral-950: oklch(0.145 0.007 286);
 
   /* ── Brand (Blue) ────────────────────────────────── */
-  --color-brand-50: oklch(0.97 0.01 255);
-  --color-brand-100: oklch(0.93 0.03 255);
-  --color-brand-200: oklch(0.86 0.06 255);
-  --color-brand-300: oklch(0.77 0.1 255);
-  --color-brand-400: oklch(0.68 0.15 258);
-  --color-brand-500: oklch(0.6 0.19 261);
-  --color-brand-600: oklch(0.52 0.2 264);
-  --color-brand-700: oklch(0.44 0.18 267);
-  --color-brand-800: oklch(0.36 0.14 268);
-  --color-brand-900: oklch(0.28 0.1 270);
-  --color-brand-950: oklch(0.19 0.06 272);
+  --color-brand-50: oklch(0.97 0.02 252);
+  --color-brand-100: oklch(0.94 0.05 255);
+  --color-brand-200: oklch(0.89 0.09 258);
+  --color-brand-300: oklch(0.83 0.15 261);
+  --color-brand-400: oklch(0.68 0.22 264);
+  --color-brand-500: oklch(0.5364 0.2689 265.76);
+  --color-brand-600: oklch(0.44 0.24 266.5);
+  --color-brand-700: oklch(0.36 0.2 268);
+  --color-brand-800: oklch(0.29 0.15 270);
+  --color-brand-900: oklch(0.22 0.1 272);
+  --color-brand-950: oklch(0.16 0.06 274);
 
   /* ── Accent (Amber) ──────────────────────────────── */
   --color-accent-50: oklch(0.98 0.02 90);

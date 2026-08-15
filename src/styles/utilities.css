@@ -1,0 +1,72 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   Custom utilities
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Shadow border ───────────────────────────────────
+   Simulates a solid border with box-shadow so it never
+   affects layout — add or remove on hover/focus without
+   shifting sibling elements.
+
+   Naming: shadow-border-{width}{-side}
+           width → 2 (defaults to 1px)
+           side  → t | b | l | r (defaults to all)
+
+   Examples:
+     shadow-border        1px all sides
+     shadow-border-2      2px all sides
+     shadow-border-t      1px top only
+     shadow-border-2-b    2px bottom only
+   ──────────────────────────────────────────────────── */
+
+/* ── Full (all 4 sides) ────────────────────────────── */
+
+@utility shadow-border {
+  box-shadow: 0 0 0 1px var(--color-border);
+}
+
+@utility shadow-border-2 {
+  box-shadow: 0 0 0 2px var(--color-border);
+}
+
+/* ── Directional: 1px ──────────────────────────────── */
+
+@utility shadow-border-t {
+  box-shadow: 0 -1px 0 0 var(--color-border);
+}
+
+@utility shadow-border-b {
+  box-shadow: 0 1px 0 0 var(--color-border);
+}
+
+@utility shadow-border-l {
+  box-shadow: -1px 0 0 0 var(--color-border);
+}
+
+@utility shadow-border-r {
+  box-shadow: 1px 0 0 0 var(--color-border);
+}
+
+/* ── Directional: 2px ──────────────────────────────── */
+
+@utility shadow-border-2-t {
+  box-shadow: 0 -2px 0 0 var(--color-border);
+}
+
+@utility shadow-border-2-b {
+  box-shadow: 0 2px 0 0 var(--color-border);
+}
+
+@utility shadow-border-2-l {
+  box-shadow: -2px 0 0 0 var(--color-border);
+}
+
+@utility shadow-border-2-r {
+  box-shadow: 2px 0 0 0 var(--color-border);
+}
+
+/* ── Typography ─────────────────────────────────────── */
+
+@utility text-xxs {
+  font-size: 0.625rem;
+  line-height: 1rem;
+}

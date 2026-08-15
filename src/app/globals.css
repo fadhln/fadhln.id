@@ -6,6 +6,7 @@
 /* ── Semantic (mode-aware) ─────────────────────────── */
 @import "../styles/semantic/light.css";
 @import "../styles/semantic/dark.css";
+@import "../styles/utilities.css";
 
 @theme inline {
   /* Surfaces */
@@ -68,10 +69,16 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  @apply tracking-tighter;
 }
 
 /* Selection color */
 ::selection {
   background-color: var(--color-selection-bg);
   color: var(--color-selection-text);
+}
+
+/* Default overrides */
+* {
+  border-color: var(--color-border);
 }
