@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 import BackToTop from "./BackToTop";
 
 const SOCIAL_LINKS = [
@@ -25,9 +27,12 @@ function Footer() {
         </div>
         <div>
           <p>Contact Me</p>
-          <p className="text-text-inverse/50 dark:text-text-primary/50 hover:text-text-inverse transition-colors">
+          <a
+            href="mailto:contact@fadhln.id"
+            className="text-text-inverse/50 dark:text-text-primary/50 dark:hover:text-text-primary hover:text-text-inverse transition-colors"
+          >
             contact@fadhln.id
-          </p>
+          </a>
         </div>
         <ul className="flex flex-col">
           {SOCIAL_LINKS.map((link) => (
@@ -40,7 +45,11 @@ function Footer() {
         </ul>
       </div>
       <div className="border-text-secondary dark:border-border mx-auto grid max-w-5xl grid-cols-4 gap-4 border-t px-8 py-6">
-        <div className="col-span-2">1</div>
+        <div className="col-span-2">
+          <div className="relative h-8 w-8">
+            <Image src="/logo.svg" alt="fadhln.id logo" fill className="object-contain" />
+          </div>
+        </div>
         <div className="text-text-inverse/50 dark:text-text-primary/50">
           <p>© {new Date().getFullYear()} Fadhlan</p>
         </div>

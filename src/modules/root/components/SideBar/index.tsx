@@ -1,5 +1,8 @@
 "use client";
 
+import Image from "next/image";
+import Link from "next/link";
+
 import { SPRING_PANEL } from "-/modules/shared/constants/ease";
 import { motion } from "motion/react";
 
@@ -16,7 +19,12 @@ function SideBarContent() {
     <aside className="bg-surface-elevated border-border shadow-border-r sticky top-0 hidden h-svh shrink-0 md:flex">
       {/* Left */}
       <div className="flex min-w-12 flex-col">
-        <div className="bg-brand h-12 w-full" />
+        <Link
+          href="/"
+          className="from-brand-500 to-brand-400 relative h-12 w-full bg-linear-to-tr from-50%"
+        >
+          <Image src="/logo.svg" alt="fadhln.id logo" fill className="h-12 w-12 object-contain" />
+        </Link>
         <div className="shadow-border-r flex flex-1 flex-col">
           <p className="my-auto px-4 font-semibold [writing-mode:sideways-lr]">
             fadhln<span className="text-brand">.id</span>
