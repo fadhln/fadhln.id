@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 
+import Footer from "./Footer";
 import SideBar from "./SideBar";
 
 const geistSans = Geist({
@@ -15,9 +16,12 @@ const geistMono = Geist_Mono({
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
-      <body className="mx-auto flex min-h-full max-w-[2560px]">
+      <body className="relative mx-auto flex min-h-full max-w-[2560px]">
         <SideBar />
-        <main className="flex-1">{children}</main>
+        <div className="flex flex-1 flex-col">
+          <main className="min-h-svh">{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   );

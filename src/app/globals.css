@@ -69,6 +69,7 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  border-color: var(--color-border);
   @apply tracking-tighter;
 }
 
@@ -76,9 +77,4 @@ body {
 ::selection {
   background-color: var(--color-selection-bg);
   color: var(--color-selection-text);
-}
-
-/* Default overrides */
-* {
-  border-color: var(--color-border);
 }
