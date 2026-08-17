@@ -1,0 +1,10 @@
+.diagonalStripes {
+  background-image: repeating-linear-gradient(
+    45deg,
+    color-mix(in srgb, var(--color-border) 75%, transparent) 0,
+    color-mix(in srgb, var(--color-border) 75%, transparent) 1px,
+    transparent 0,
+    transparent 50%
+  );
+  background-size: 10px 10px;
+}

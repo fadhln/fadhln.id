@@ -1,6 +1,9 @@
 import { Geist, Geist_Mono } from "next/font/google";
 
+import cn from "-/modules/shared/utils/cn";
+
 import Footer from "./Footer";
+import styles from "./RootLayout.module.css";
 import SideBar from "./SideBar";
 
 const geistSans = Geist({
@@ -20,7 +23,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="relative mx-auto flex min-h-full max-w-380">
         <SideBar />
         <div className="flex flex-1 flex-col">
-          <main className="diagonal-stripes flex min-h-svh flex-col">{children}</main>
+          <main className={cn("flex min-h-svh flex-col", styles.diagonalStripes)}>{children}</main>
           <Footer />
         </div>
       </body>

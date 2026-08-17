@@ -12,7 +12,7 @@ const SOCIAL_LINKS = [
 function Footer() {
   return (
     <footer className="shadow-border-t text-muted-foreground dark:bg-surface-tertiary dark:text-text-primary bg-text-primary text-text-inverse text-xs tracking-tight">
-      <div className="mx-auto grid max-w-5xl grid-cols-2 gap-4 px-6 py-6 sm:grid-cols-3 md:grid-cols-4">
+      <div className="mx-auto grid max-w-5xl grid-cols-2 gap-4 p-8 sm:grid-cols-3 md:grid-cols-4">
         <div>
           <div className="flex h-fit items-center gap-1">
             <div className="bg-brand h-1 rounded-full p-1" />
@@ -34,7 +34,7 @@ function Footer() {
           </p>
         </div>
         <div>
-          <p>Contact Me</p>
+          <p>Connect</p>
           <a
             href="mailto:contact@fadhln.id"
             className="text-text-inverse/50 dark:text-text-primary/50 dark:hover:text-text-primary hover:text-text-inverse transition-colors"
@@ -52,7 +52,7 @@ function Footer() {
           ))}
         </ul>
       </div>
-      <div className="border-text-secondary dark:border-border mx-auto grid max-w-5xl grid-cols-2 gap-4 border-t px-8 py-6 sm:grid-cols-3 md:grid-cols-4">
+      <div className="border-text-secondary dark:border-border mx-auto grid max-w-5xl grid-cols-2 gap-4 border-t p-8 sm:grid-cols-3 md:grid-cols-4">
         <div className="md:col-span-2">
           <div className="relative h-8 w-8">
             <Image src="/logo.svg" alt="fadhln.id logo" fill className="object-contain" />
