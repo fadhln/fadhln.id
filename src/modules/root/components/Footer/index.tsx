@@ -11,7 +11,7 @@ const SOCIAL_LINKS = [
 
 function Footer() {
   return (
-    <footer className="shadow-border-t text-muted-foreground dark:bg-surface-tertiary dark:text-text-primary bg-text-primary text-text-inverse pb-8 text-xs tracking-tight">
+    <footer className="shadow-border-t text-muted-foreground dark:bg-surface-tertiary dark:text-text-primary bg-text-primary text-text-inverse text-xs tracking-tight">
       <div className="mx-auto grid max-w-5xl grid-cols-2 gap-4 px-6 py-6 sm:grid-cols-3 md:grid-cols-4">
         <div>
           <div className="flex h-fit items-center gap-1">
@@ -68,6 +68,7 @@ function Footer() {
           </div>
         </div>
       </div>
+      <div className="bg-brand mt-6 h-2 w-full" />
     </footer>
   );
 }

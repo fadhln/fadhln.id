@@ -17,10 +17,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
       <link rel="icon" href="/favicon.ico" sizes="any" />
-      <body className="relative mx-auto flex min-h-full max-w-[2560px]">
+      <body className="relative mx-auto flex min-h-full max-w-380">
         <SideBar />
         <div className="flex flex-1 flex-col">
-          <main className="min-h-svh">{children}</main>
+          <main className="diagonal-stripes flex min-h-svh flex-col">{children}</main>
           <Footer />
         </div>
       </body>
