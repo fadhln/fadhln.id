@@ -1,3 +1,8 @@
+import Link from "next/link";
+
+import { Button } from "../shared/components/Button";
+import CopyEmail from "./components/CopyEmail";
+
 function Home() {
   return (
     <div className="flex w-full flex-1 flex-col items-center">
@@ -17,10 +22,16 @@ function Home() {
           <p className="text-on-bg-secondary mt-1 text-4xl font-medium">
             Software Engineer from <span className="text-on-bg">Indonesia.</span>
           </p>
-          <p className="mt-4 md:max-w-1/2">
+          <p className="mt-2 md:max-w-1/2">
             Helping organizations to ship friendly, reliable, and scalable software. Always open to
             exciting new challenges.
           </p>
+        </div>
+        <div className="mt-6 flex gap-3">
+          <Button variant="primary" render={<Link href={"/about"} />} nativeButton={false}>
+            About Me
+          </Button>
+          <CopyEmail />
         </div>
       </div>
     </div>

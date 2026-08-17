@@ -16,7 +16,7 @@
   --color-primary: var(--color-brand-600);
   --color-on-primary: var(--color-white);
   --color-primary-hover: var(--color-brand-500);
-  --color-primary-active: var(--color-brand-700);
+  --color-primary-active: var(--color-brand-400);
 
   /* ── Borders ──────────────────────────────────────── */
   --color-border: var(--color-neutral-200);

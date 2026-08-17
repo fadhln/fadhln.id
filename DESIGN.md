@@ -84,6 +84,10 @@ Families: `--font-sans` = Geist, `--font-mono` = Geist Mono. Set via Next.js `ne
 
 Case: UPPERCASE for sidebar section headers, commit hashes, metadata labels. Sentence case for nav items, body, headings.
 
+## Icons
+
+Library: `@radix-ui/react-icons` exclusively. Do not use lucide, react-icons, or any other icon library. Import individually: `import { ArrowUpIcon } from "@radix-ui/react-icons"`.
+
 ## Spacing
 
 `--sidebar-width: 16rem`, `--sidebar-width-icon: 0px`. Base-8 scale. Tailwind: `p-8` (2rem), `gap-4` (1rem), etc.
