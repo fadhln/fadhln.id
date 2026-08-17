@@ -96,7 +96,7 @@ function SideNav() {
   return (
     <div ref={containerRef} className="relative py-4">
       <div
-        className="bg-interactive-active absolute right-0 left-0 z-0 transition-all duration-200 ease-out"
+        className="bg-bg-inset absolute right-0 left-0 z-0 transition-all duration-200 ease-out"
         style={{
           top: indicatorStyle.top,
           height: indicatorStyle.height,
@@ -122,7 +122,7 @@ function SideNav() {
             }}
             transition={{ duration: 0.15, ease: "easeInOut" }}
           >
-            <p className="text-text-tertiary mx-4 text-xs tracking-widest uppercase">
+            <p className="text-on-bg-muted mx-4 text-xs tracking-widest uppercase">
               {section.title}
             </p>
             <ul className="mt-2 flex flex-col">
@@ -133,12 +133,12 @@ function SideNav() {
                     ref={(el) => registerItem(item.link, el)}
                     className={`flex w-full items-baseline justify-between px-4 py-1 transition-colors ${
                       activeLink === item.link
-                        ? "text-text-primary"
-                        : "text-text-secondary hover:text-text-primary"
+                        ? "text-on-bg"
+                        : "text-on-bg-secondary hover:text-on-bg"
                     }`}
                   >
                     <span>{item.name}</span>
-                    <span className="text-text-tertiary font-mono text-sm font-light">
+                    <span className="text-on-bg-muted font-mono text-sm font-light">
                       {item.number}
                     </span>
                   </Link>

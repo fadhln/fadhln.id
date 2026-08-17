@@ -10,7 +10,7 @@ function CommitHash() {
       <p>
         Latest Commit: <span className="underline">{process.env.NEXT_PUBLIC_GIT_HASH}</span>
       </p>
-      <p className="text-text-secondary">Updated: {date}</p>
+      <p className="text-on-bg-secondary">Updated: {date}</p>
     </div>
   );
 }

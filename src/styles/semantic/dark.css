@@ -1,57 +1,47 @@
 @media (prefers-color-scheme: dark) {
   :root {
-    /* ── Surfaces ──────────────────────────────────── */
-    --color-surface: var(--color-black);
-    --color-surface-secondary: var(--color-neutral-950);
-    --color-surface-tertiary: var(--color-neutral-900);
-    --color-surface-elevated: var(--color-neutral-900);
-    --color-surface-overlay: rgba(0, 0, 0, 0.6);
+    /* ── Background ─────────────────────────────────── */
+    --color-bg: var(--color-black);
+    --color-bg-secondary: var(--color-neutral-950);
+    --color-bg-elevated: var(--color-neutral-900);
+    --color-bg-overlay: rgba(0, 0, 0, 0.6);
+    --color-bg-inset: var(--color-neutral-800);
 
-    /* ── Text ──────────────────────────────────────── */
-    --color-text-primary: var(--color-neutral-50);
-    --color-text-secondary: var(--color-neutral-400);
-    --color-text-tertiary: var(--color-neutral-500);
-    --color-text-inverse: var(--color-black);
-    --color-text-link: var(--color-brand-400);
-    --color-text-link-hover: var(--color-brand-300);
+    /* ── Text ───────────────────────────────────────── */
+    --color-on-bg: var(--color-neutral-50);
+    --color-on-bg-secondary: var(--color-neutral-400);
+    --color-on-bg-muted: var(--color-neutral-500);
+    --color-on-bg-inverse: var(--color-black);
 
-    /* ── Brand / Actions ───────────────────────────── */
-    --color-brand: var(--color-brand-500);
-    --color-brand-hover: var(--color-brand-400);
-    --color-brand-active: var(--color-brand-300);
-    --color-brand-subtle: var(--color-brand-950);
-    --color-brand-on-brand: var(--color-black);
+    /* ── Primary ────────────────────────────────────── */
+    --color-primary: var(--color-brand-500);
+    --color-on-primary: var(--color-white);
+    --color-primary-hover: var(--color-brand-400);
+    --color-primary-active: var(--color-brand-300);
 
-    /* ── Borders ───────────────────────────────────── */
+    /* ── Borders ────────────────────────────────────── */
     --color-border: var(--color-neutral-800);
     --color-border-strong: var(--color-neutral-700);
     --color-border-hover: var(--color-neutral-600);
 
-    /* ── State: Success ────────────────────────────── */
+    /* ── State ──────────────────────────────────────── */
     --color-success: var(--color-success-500);
     --color-success-subtle: oklch(0.22 0.04 160);
     --color-success-text: var(--color-success-500);
 
-    /* ── State: Warning ────────────────────────────── */
     --color-warning: var(--color-warning-500);
     --color-warning-subtle: oklch(0.22 0.04 80);
     --color-warning-text: var(--color-warning-500);
 
-    /* ── State: Error ──────────────────────────────── */
     --color-error: var(--color-error-500);
     --color-error-subtle: oklch(0.22 0.04 20);
     --color-error-text: var(--color-error-500);
 
-    /* ── State: Info ───────────────────────────────── */
     --color-info: var(--color-info-500);
     --color-info-subtle: oklch(0.22 0.04 235);
     --color-info-text: var(--color-info-500);
 
-    /* ── Interactive ───────────────────────────────── */
-    --color-interactive-hover: var(--color-neutral-900);
-    --color-interactive-active: var(--color-neutral-800);
-
-    /* ── Misc ──────────────────────────────────────── */
+    /* ── Misc ───────────────────────────────────────── */
     --color-code-bg: rgba(255, 255, 255, 0.08);
     --color-selection-bg: var(--color-brand-800);
     --color-selection-text: var(--color-neutral-50);

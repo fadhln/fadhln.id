@@ -16,7 +16,7 @@ function SideBarContent() {
   const { collapsed, reduce } = useSideBarContext();
 
   return (
-    <aside className="bg-surface-elevated border-border shadow-border-r sticky top-0 hidden h-svh shrink-0 md:flex">
+    <aside className="bg-bg-elevated border-border shadow-border-r sticky top-0 hidden h-svh shrink-0 md:flex">
       {/* Left */}
       <div className="flex min-w-12 flex-col">
         <Link
@@ -27,7 +27,7 @@ function SideBarContent() {
         </Link>
         <div className="shadow-border-r flex flex-1 flex-col">
           <p className="my-auto px-4 font-semibold [writing-mode:sideways-lr]">
-            fadhln<span className="text-brand">.id</span>
+            fadhln<span className="text-primary">.id</span>
           </p>
           <div className="flex-1" />
           <div className="shadow-border-t h-12 w-12">

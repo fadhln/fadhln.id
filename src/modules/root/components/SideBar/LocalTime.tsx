@@ -34,9 +34,9 @@ function LocalTime() {
   }, []);
 
   return (
-    <div className="shadow-border-b bg-text-primary text-text-inverse dark:bg-surface-tertiary dark:text-text-primary flex h-12 items-center justify-between px-3">
+    <div className="shadow-border-b bg-on-bg text-on-bg-inverse dark:bg-bg-elevated dark:text-on-bg flex h-12 items-center justify-between px-3">
       <div className="flex items-center gap-2">
-        <div className="bg-brand h-2 w-2 rounded-full" />
+        <div className="bg-primary h-2 w-2 rounded-full" />
         <p className="font-semibold">{time}</p>
       </div>
       <p className="text-xs opacity-70">{TIME_ZONE}</p>
