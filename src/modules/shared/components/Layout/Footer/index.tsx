@@ -20,17 +20,27 @@ function Footer() {
           </div>
           <p className="text-on-bg-inverse/50 dark:text-on-bg/50 md:hidden">
             Commit{" "}
-            <span className="font-mono uppercase underline">
+            <a
+              className="dark:hover:text-on-bg hover:text-on-bg-inverse font-mono uppercase underline transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+              href={`https://github.com/fadhln/fadhln.id/commit/${process.env.NEXT_PUBLIC_GIT_HASH}`}
+            >
               {process.env.NEXT_PUBLIC_GIT_HASH}
-            </span>
+            </a>
           </p>
         </div>
         <div className="hidden md:block">
           <p className="text-on-bg-inverse/50 dark:text-on-bg/50">
             Commit{" "}
-            <span className="font-mono uppercase underline">
+            <a
+              className="dark:hover:text-on-bg hover:text-on-bg-inverse font-mono uppercase underline transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+              href={`https://github.com/fadhln/fadhln.id/commit/${process.env.NEXT_PUBLIC_GIT_HASH}`}
+            >
               {process.env.NEXT_PUBLIC_GIT_HASH}
-            </span>
+            </a>
           </p>
         </div>
         <div>
