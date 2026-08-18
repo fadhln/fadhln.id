@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import RootLayout from "-/modules/root/components/RootLayout";
+import { RootLayout } from "-/modules/shared/components/Layout";
 
 import "./globals.css";
 
