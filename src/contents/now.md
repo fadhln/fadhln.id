@@ -1,0 +1,36 @@
+---
+created_at: 18-08-2026
+updated_at: 18-08-2026
+---
+
+# 18 August 2026
+
+What I'm currently focused on:
+
+## Work
+
+Currently looking for my next full-time role. I am open for Frontend or Full-stack Software Engineer position.
+
+You can find my latest resume on [LinkedIn](https://linkedin.com/in/fadhln), or hit me up at [contact@fadhln.id](mailto:contact@fadhln.id) if your organization is looking for a Software Engineer.
+
+In the meantime, I am actively growing [this website](https://fadhln.id) and building a Gas Station (SPBU) reconciliation app. It's still a work in progress, so more on that later.
+
+## Learning
+
+Diving deep on RAGs and Agentic AIs. I think AI is here to stay and I need to stay ahead of the curve to avoid being obsolete.
+
+On the other hand, I also re-learning Islam. I was born Muslom, but I don't want to accept Islam as-is. I want to be able to understand and fully practice my religion.
+
+I am enrolled in an online course at [Mahad BIAS (Bimbingan Islam)](https://mahad.bimbinganislam.com/) where I learn about basic islamic knowledge such as _Aqidah_ (Creed), _Fiqh_ (Law), and _Adab_ (Morals). My final exam is coming up.. wish me luck.
+
+## Reading
+
+- _Psychology of Money_ by Morgan Housel.
+
+  I know, cliché. But at least 3 of my friends has suggested that I read this book. Now, I want to find out if this book is really worth the hype.
+
+## Life
+
+- After 26 years of living on this planet, I can finally swim! Yesterday, I managed to complete a 25 m lap without a swimming board.
+
+- Trying my best to run at least 10K a week.
