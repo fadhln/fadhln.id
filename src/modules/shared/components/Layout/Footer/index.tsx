@@ -12,7 +12,7 @@ const SOCIAL_LINKS = [
 function Footer() {
   return (
     <footer className="shadow-border-t dark:bg-bg-secondary bg-on-bg text-on-bg-inverse dark:text-on-bg text-xs tracking-tight">
-      <div className="mx-auto grid max-w-5xl grid-cols-2 gap-4 p-8 sm:grid-cols-3 md:grid-cols-4">
+      <div className="mx-auto grid max-w-5xl grid-cols-2 gap-4 px-12 py-8 sm:grid-cols-3 md:grid-cols-4">
         <div>
           <div className="flex h-fit items-center gap-1">
             <div className="bg-primary h-1 rounded-full p-1" />
@@ -62,7 +62,7 @@ function Footer() {
           ))}
         </ul>
       </div>
-      <div className="border-on-bg-secondary dark:border-border mx-auto grid max-w-5xl grid-cols-2 gap-4 border-t p-8 sm:grid-cols-3 md:grid-cols-4">
+      <div className="border-on-bg-secondary dark:border-border mx-auto grid max-w-5xl grid-cols-2 gap-4 border-t px-12 py-8 sm:grid-cols-3 md:grid-cols-4">
         <div className="md:col-span-2">
           <div className="relative h-8 w-8">
             <Image src="/logo.svg" alt="fadhln.id logo" fill className="object-contain" />

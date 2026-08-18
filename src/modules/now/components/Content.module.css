@@ -1,0 +1,32 @@
+@reference "../../../app/globals.css";
+
+.nowContent {
+  @apply mt-10;
+  & > ul > li {
+    @apply relative ml-6 tracking-tight;
+
+    &::before {
+      @apply bg-border absolute top-10 left-[-0.9rem] h-[calc(100%-2.5rem)] w-px content-[''];
+    }
+
+    & > p:first-of-type {
+      @apply bg-bg text-on-bg-secondary my-4 -ml-6 text-2xl font-semibold;
+    }
+
+    & h2 {
+      @apply text-lg leading-loose font-semibold;
+    }
+
+    & p {
+      @apply my-2 text-base;
+    }
+
+    & a {
+      @apply text-on-bg-secondary hover:text-on-bg underline transition-colors;
+    }
+
+    & ul {
+      @apply ml-4 list-disc;
+    }
+  }
+}

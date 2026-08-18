@@ -1,6 +1,7 @@
 import Callout from "../shared/components/Callout";
 import { PageLayout } from "../shared/components/Layout";
 import Text from "../shared/components/Text";
+import Content from "./components/Content";
 
 function Now() {
   return (
@@ -25,6 +26,7 @@ function Now() {
           .
         </Text>
       </Callout>
+      <Content />
     </PageLayout>
   );
 }
