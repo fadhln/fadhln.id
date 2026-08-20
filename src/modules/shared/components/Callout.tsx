@@ -50,7 +50,11 @@ function Callout({ variant = "neutral", withIcon, title, children, className }: 
   return (
     <div
       role="alert"
-      className={cn("flex gap-3 rounded-xs border px-4 py-3 text-sm", styles.container, className)}
+      className={cn(
+        "flex gap-3 rounded-xs border px-4 py-3 text-base",
+        styles.container,
+        className,
+      )}
     >
       {icon}
       <div className="flex flex-col gap-1">

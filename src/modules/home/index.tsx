@@ -17,7 +17,7 @@ function Home() {
         <p className="text-on-bg-secondary mt-1 text-4xl font-medium">
           Software Engineer from <span className="text-on-bg">Indonesia.</span>
         </p>
-        <p className="mt-2 md:max-w-1/2">
+        <p className="mt-2 text-lg tracking-tight md:max-w-1/2">
           Helping organizations to ship friendly, reliable, and scalable software. Always open to
           exciting new challenges.
         </p>

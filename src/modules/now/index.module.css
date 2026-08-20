@@ -1,0 +1,21 @@
+@reference "../../app/globals.css";
+
+.nowContent {
+  @apply text-on-bg-secondary mt-6 text-base leading-loose tracking-tight;
+
+  & p {
+    @apply my-2;
+  }
+
+  & ul {
+    @apply ml-4 list-disc;
+  }
+
+  & h3 {
+    @apply text-on-bg mt-4 text-xl font-semibold;
+  }
+
+  & a {
+    @apply hover:text-on-bg underline transition-colors;
+  }
+}
