@@ -10,7 +10,7 @@ const BTN_VARIANTS = {
     ghost: "text-on-bg hover:bg-bg/50 bg-transparent",
   },
   size: {
-    sm: "h-6 px-3 text-sm",
+    sm: "h-7 px-3 text-xs",
     md: "h-8 px-4 text-sm",
     lg: "h-10 px-6 text-base",
   },
