@@ -1,4 +1,4 @@
-import type { ComponentType, ReactNode } from "react";
+import type { ComponentType, PropsWithChildren, ReactNode } from "react";
 
 import cn from "-/modules/shared/utils/cn";
 import {
@@ -8,7 +8,7 @@ import {
   InfoCircledIcon,
 } from "@radix-ui/react-icons";
 
-type CalloutVariant = "info" | "warning" | "error" | "success" | "neutral";
+type CalloutVariant = "info" | "warning" | "danger" | "success" | "neutral";
 
 type CalloutProps = {
   variant?: CalloutVariant;
@@ -18,7 +18,7 @@ type CalloutProps = {
   className?: string;
 };
 
-const typeStyles = {
+const TYPE_STYLES = {
   info: {
     container: "border-info/30 bg-info-subtle text-info-text",
     icon: <InfoCircledIcon />,
@@ -27,7 +27,7 @@ const typeStyles = {
     container: "border-warning/30 bg-warning-subtle text-warning-text",
     icon: <ExclamationTriangleIcon />,
   },
-  error: {
+  danger: {
     container: "border-error/30 bg-error-subtle text-error-text",
     icon: <CrossCircledIcon />,
   },
@@ -42,7 +42,7 @@ const typeStyles = {
 } as const;
 
 function Callout({ variant = "neutral", withIcon, title, children, className }: CalloutProps) {
-  const styles = typeStyles[variant];
+  const styles = TYPE_STYLES[variant];
   const Icon = typeof withIcon === "function" ? withIcon : null;
 
   const icon = Icon ? <Icon className="size-5 shrink-0" /> : withIcon ? styles.icon : null;
@@ -62,6 +62,22 @@ function Callout({ variant = "neutral", withIcon, title, children, className }: 
         <div>{children}</div>
       </div>
     </div>
+  );
+}
+
+export function callout({
+  children,
+  ...props
+}: PropsWithChildren<{ "data-variant": CalloutVariant; "data-title": string }>) {
+  const variant = props["data-variant"];
+  const title = props["data-title"];
+
+  if (!variant) return null;
+
+  return (
+    <Callout variant={variant} title={title} withIcon>
+      {children}
+    </Callout>
   );
 }
 

@@ -31,7 +31,7 @@ const SIDEBAR_CONTENT: SideBarContentSection[] = [
   {
     title: "Writings",
     content: [
-      { name: "Snippets", number: "03", link: "/snippets" },
+      { name: "Bits", number: "03", link: "/bits" },
       { name: "Posts", number: "04", link: "/posts" },
       { name: "Notes", number: "05", link: "/notes" },
       { name: "Resources", number: "06", link: "/resources" },

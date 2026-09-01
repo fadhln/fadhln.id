@@ -1,47 +1,56 @@
-import type { AnchorHTMLAttributes } from "react";
+import { Suspense } from "react";
 
-import { compileMDX } from "next-mdx-remote/rsc";
-import Link from "next/link";
+import { type EvaluateOptions, evaluate } from "next-mdx-remote-client/rsc";
 
-import Timeline from "-/contents/components/Timeline";
-import { getMDXContent } from "-/lib/mdx";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import path from "node:path";
 
 import { Button } from "../shared/components/Button";
-import Callout from "../shared/components/Callout";
 import { PageLayout } from "../shared/components/Layout";
 import Text from "../shared/components/Text";
-import { githubFilePathGen } from "../shared/utils/github";
-import styles from "./index.module.css";
-
-const filePath = path.join("src", "contents", "now.mdx");
-
-const { content, frontmatter } = getMDXContent(path.join(process.cwd(), filePath));
-
-const githubUrl = githubFilePathGen(filePath);
-
-function CustomAnchor({ href, ...props }: AnchorHTMLAttributes<HTMLAnchorElement>) {
-  const isExternal = href?.startsWith("http") || href?.startsWith("mailto:");
-
-  if (isExternal) {
-    return <a href={href} target="_blank" rel="noopener noreferrer" {...props} />;
-  }
-
-  return <Link href={href ?? ""} {...props} />;
-}
-
-const overrideComponents = {
-  a: CustomAnchor,
-  Timeline,
-};
+import ErrorView from "../shared/components/View/ErrorView";
+import LoadingView from "../shared/components/View/LoadingView";
+import { components } from "../shared/components/mdx";
+import type { NowFrontmatter } from "../shared/types/file";
+import { formatDate } from "../shared/utils/date";
+import { getMarkdownExtension, getSource, githubFilePath } from "../shared/utils/file";
+import { plugins } from "../shared/utils/mdx";
+import Timeline from "./components/Timeline";
 
 async function Now() {
-  const { content: mdxContent } = await compileMDX({
-    source: content,
-    components: overrideComponents,
-    options: { blockJS: false },
+  const filename = "index.mdx";
+
+  const githubUrl = githubFilePath(path.join("now", filename));
+
+  const source = await getSource("now", filename);
+  if (!source) {
+    return <ErrorView error="This page is empty." />;
+  }
+
+  const format = getMarkdownExtension(filename);
+
+  const options: EvaluateOptions = {
+    disableExports: true,
+    disableImports: true,
+    parseFrontmatter: true,
+    mdxOptions: {
+      format,
+      ...plugins,
+    },
+  };
+
+  const { content, error, frontmatter } = await evaluate<NowFrontmatter>({
+    source,
+    options,
+    components: {
+      Timeline,
+      ...components,
+    },
   });
+
+  if (error) {
+    return <ErrorView error={error} />;
+  }
 
   return (
     <PageLayout
@@ -50,22 +59,9 @@ async function Now() {
         title: "Now",
       }}
     >
-      <Callout withIcon title="About" variant="neutral">
-        <Text>
-          This is a <span className="font-medium">now page</span>, a log of what I'm currently
-          doing, learning, or thinking about. Learn more about now pages{" "}
-          <Text
-            variant="link"
-            href="https://nownownow.com/about"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            here
-          </Text>
-          .
-        </Text>
-      </Callout>
-      <article className={styles.nowContent}>{mdxContent}</article>
+      <Suspense fallback={<LoadingView />}>
+        <div className="text-on-bg-secondary text-base leading-loose tracking-tight">{content}</div>
+      </Suspense>
       <div className="shadow-border-t mt-8 flex justify-between pt-4">
         <div className="flex flex-col gap-2 text-xs">
           <Text>Found any mistakes or typos?</Text>
@@ -82,8 +78,17 @@ async function Now() {
           </div>
         </div>
         <div className="text-on-bg-secondary flex flex-col items-end text-xs">
-          <Text>Created at: {frontmatter.created_at}</Text>
-          <Text>Last edited at: {frontmatter.updated_at}</Text>
+          {frontmatter.created_at && (
+            <Text>
+              Created at: {formatDate(new Date(frontmatter.created_at), "date-month-year-short")}
+            </Text>
+          )}
+          {frontmatter.updated_at && (
+            <Text>
+              Last edited at:{" "}
+              {formatDate(new Date(frontmatter.updated_at), "date-month-year-short")}
+            </Text>
+          )}
         </div>
       </div>
     </PageLayout>
