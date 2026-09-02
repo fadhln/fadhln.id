@@ -113,7 +113,7 @@ Responsive: `< md` sidebar hidden (`hidden`), hero stacks to 1-col, content full
 
 ## Component Tokens
 
-### SideNav (`src/modules/root/components/SideBar/SideNav.tsx`)
+### SideNav (`src/modules/shared/components/Layout/SideBar/SideNav.tsx`)
 
 - Section label: `text-on-bg-muted`, `text-xs`, `uppercase`, `tracking-widest`
 - Item active: `text-on-bg`
@@ -121,17 +121,17 @@ Responsive: `< md` sidebar hidden (`hidden`), hero stacks to 1-col, content full
 - Indicator: `bg-bg-inset`, animated position/height
 - Index number: `text-on-bg-muted`, `font-mono`
 
-### LocalTime (`src/modules/root/components/SideBar/LocalTime.tsx`)
+### LocalTime (`src/modules/shared/components/Layout/SideBar/LocalTime.tsx`)
 
 - Bar: `bg-on-bg text-on-bg-inverse`, `shadow-border-b`, `h-12`
 - Pulse dot: `bg-primary`, 8px, `rounded-full`
 
-### CommitHash (`src/modules/root/components/SideBar/CommitHash.tsx`)
+### CommitHash (`src/modules/shared/components/Layout/SideBar/CommitHash.tsx`)
 
 - Container: `font-mono`, `text-xxs`, `uppercase`, `tracking-wider`, `shadow-border-b`
 - Date: `text-on-bg-secondary`
 
-### Button (`src/modules/shared/components/Button/index.tsx`)
+### Button (`src/modules/shared/components/Button/Button.tsx`)
 
 Base UI `<Button>`. Variants:
 
@@ -140,7 +140,7 @@ Base UI `<Button>`. Variants:
 - `ghost`: `text-on-bg bg-transparent`, hover `bg-bg/50`
   Sizes: `sm` h-6, `md` h-8, `lg` h-10. All `rounded-xs`.
 
-### Footer (`src/modules/root/components/Footer/index.tsx`)
+### Footer (`src/modules/shared/components/Layout/Footer/index.tsx`)
 
 - Light: `bg-on-bg text-on-bg-inverse`. Dark: `bg-bg-secondary text-on-bg`.
 - Dimmed text: `text-on-bg-inverse/50 dark:text-on-bg/50`
@@ -155,18 +155,21 @@ src/styles/tokens/colors.css                     # @theme oklch primitives
 src/styles/semantic/light.css                    # :root semantic tokens
 src/styles/semantic/dark.css                     # @media dark overrides
 src/styles/utilities.css                         # shadow-border, text-xxs
-src/modules/root/components/RootLayout.tsx       # shell: sidebar + main + footer
-src/modules/root/components/RootLayout.module.css# diagonalStripes
-src/modules/root/components/Footer/index.tsx     # inverted footer
-src/modules/root/components/Footer/BackToTop.tsx # scroll-to-top
-src/modules/root/components/SideBar/index.tsx    # sidebar shell + collapse
-src/modules/root/components/SideBar/LocalTime.tsx# live clock (Asia/Jakarta)
-src/modules/root/components/SideBar/CommitHash.tsx# git metadata
-src/modules/root/components/SideBar/SideNav.tsx  # numbered nav + animated indicator
-src/modules/root/components/SideBar/ToggleTrigger.tsx# chevron toggle
-src/modules/root/components/SideBar/contexts/SideBarProvider.tsx # collapse state, CSS vars
+src/app/(main)/layout.tsx                        # route layout -> RootLayout
+src/modules/shared/components/Layout/RootLayout.tsx       # shell: sidebar + main + footer
+src/modules/shared/components/Layout/RootLayout.module.css# diagonalStripes
+src/modules/shared/components/Layout/PageLayout.tsx       # cover + centered content column
+src/modules/shared/components/Layout/Footer/index.tsx     # inverted footer
+src/modules/shared/components/Layout/Footer/BackToTop.tsx # scroll-to-top
+src/modules/shared/components/Layout/SideBar/index.tsx    # sidebar shell + collapse
+src/modules/shared/components/Layout/SideBar/LocalTime.tsx# live clock (Asia/Jakarta)
+src/modules/shared/components/Layout/SideBar/CommitHash.tsx# git metadata
+src/modules/shared/components/Layout/SideBar/SideNav.tsx  # numbered nav + animated indicator
+src/modules/shared/components/Layout/SideBar/ToggleTrigger.tsx# chevron toggle
+src/modules/shared/components/Layout/SideBar/contexts/SideBarProvider.tsx # collapse state, CSS vars
 src/modules/home/index.tsx                       # hero + intro
-src/modules/shared/components/Button/index.tsx   # Base UI Button (3 variants)
+src/modules/shared/components/Button/Button.tsx  # Base UI Button (3 variants)
+src/modules/shared/components/mdx/index.tsx      # shared MDX component map
 src/modules/shared/constants/ease.ts             # Motion spring config
 src/modules/shared/hooks/useControlledState.ts   # controlled/uncontrolled state hook
 src/modules/shared/utils/cn.ts                   # clsx + tailwind-merge

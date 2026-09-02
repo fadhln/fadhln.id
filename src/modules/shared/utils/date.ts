@@ -18,7 +18,7 @@ export function formatDate(date: Date, formatType: StringWithSuggestion<FormatDa
   }
 
   if (formatType === "date-month-year-short") {
-    return format(date, `{dd} ${localeFormat(date, "{MM}")} {yyyy}`);
+    return format(date, `{dd} ${localeFormat(date, "{MMM}")} {yyyy}`);
   }
 
   return format(date, formatType);
