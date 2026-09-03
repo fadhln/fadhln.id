@@ -8,6 +8,7 @@ import {
   useState,
 } from "react";
 
+import Checkbox from "-/modules/shared/components/Checkbox/Checkbox";
 import { SPRING_PANEL } from "-/modules/shared/constants/ease";
 import cn from "-/modules/shared/utils/cn";
 import { ChevronRightIcon, TrashIcon } from "@radix-ui/react-icons";
@@ -361,12 +362,14 @@ function DynamicHitArea() {
 
   return (
     <div className="my-4">
-      <label className="text-on-bg-secondary mb-4 flex w-fit cursor-default items-center gap-2 font-mono text-xs tracking-widest uppercase select-none">
-        <input
-          type="checkbox"
+      <label
+        htmlFor="dynamic-hit-area-viz"
+        className="text-on-bg-secondary mb-4 flex w-fit cursor-pointer items-center gap-2 font-mono text-xs tracking-widest uppercase select-none"
+      >
+        <Checkbox
+          id="dynamic-hit-area-viz"
           checked={showHitArea}
-          onChange={(event) => setShowHitArea(event.target.checked)}
-          className="accent-info size-3.5"
+          onCheckedChange={(checked) => setShowHitArea(checked === true)}
         />
         Show hit area
       </label>
