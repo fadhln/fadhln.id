@@ -5,4 +5,5 @@ export const bitsComponents: MDXComponents = {
   GroupHover: dynamic(() => import("./GroupHover")),
   HoverTriangle: dynamic(() => import("./HoverTriangle")),
   DebounceThrottle: dynamic(() => import("./DebounceThrottle")),
+  AsyncButtonStates: dynamic(() => import("./AsyncButtonStates")),
 };
