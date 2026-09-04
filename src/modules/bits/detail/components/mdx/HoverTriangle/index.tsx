@@ -19,7 +19,7 @@ function HoverTriangle() {
 
   return (
     <div className="flex h-full w-full flex-col items-center justify-center">
-      <Menu data={DUMMY_DATA} safeHover={safeHover} />
+      <Menu data={DUMMY_DATA} safeHover={safeHover} showHitArea={showHitArea} />
       <div className="mt-8 flex items-center gap-2">
         <Checkbox
           label="Enable Hover Area"
