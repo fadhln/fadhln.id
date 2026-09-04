@@ -19,7 +19,7 @@ type TextProps = {
   children?: ReactNode;
 } & Record<string, unknown>;
 
-const DEFAULT_ELEMENT: Record<TextVariant, ElementType> = {
+const DEFAULT_ELEMENT: Record<TextVariant, "h1" | "p" | "a"> = {
   title: "h1",
   label: "p",
   body: "p",
