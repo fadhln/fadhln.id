@@ -1,0 +1,53 @@
+---
+title: "Building a Small MDX Content System"
+summary: "The simple split between content, page data, and interactive components behind this site."
+created_at: "2026-09-04"
+updated_at: "2026-09-04"
+tags: ["frontend"]
+---
+
+Starting a personal blog often tempts you to wire up a headless CMS or configure an external database before writing a single sentence. For this site, I wanted content to live directly alongside the code in Git, so I built a small MDX pipeline on top of Next.js App Router and `next-mdx-remote-client`.
+
+Keeping articles in the repository means content revisions use the same review flow as code changes. Every edit has a plain text diff, and staging new posts requires no database credentials or API keys.
+
+## Slugs from filenames, metadata from frontmatter
+
+Each post lives under `src/contents/posts/` with standard YAML frontmatter at the top of the file:
+
+```yaml
+---
+title: "A clear post title"
+summary: "A brief summary for lists and social cards."
+created_at: "2026-09-04"
+updated_at: "2026-09-04"
+tags: ["nextjs", "mdx"]
+---
+```
+
+The filename directly forms the URL slug (for example, `building-mdx-content-system.mdx` maps to `/posts/building-mdx-content-system`). This convention eliminates manual slug fields and keeps routing predictable.
+
+When rendering the post index, a utility reads the directory with Node's file system APIs, parses frontmatter headers, and sorts posts by publication date without evaluating the MDX body. The full compilation only runs when a reader navigates to the specific post route.
+
+## Splitting prose from stateful components
+
+MDX makes it easy to drop custom JSX into long-form writing, but mixing complex client state directly into Markdown files quickly leads to messy syntax errors and awkward escaping.
+
+I keep a strict boundary: MDX files handle prose, code blocks, and section layout. Any interactive logic (state hooks, timers, animation loops) lives in standard React components in `src/modules/`:
+
+```tsx
+// src/modules/posts/detail/index.tsx
+const { content, frontmatter } = await evaluate<PostFrontmatter>({
+  source,
+  options,
+  components: {
+    ...components,
+    ...bitsComponents,
+  },
+});
+```
+
+Because custom components are injected into the evaluation scope through the component map, authors can drop `<DebounceThrottle />` or `<GroupHover />` directly into an MDX file like a native tag. The Markdown remains readable, while the component handles its own cleanup and lifecycle methods.
+
+## Keeping the contract minimal
+
+The schema stays intentionally minimal: title, summary, dates, tags, and MDX source. Features like full-text search indexing, draft flags, and category hierarchies can wait until publication volume actually demands them. Starting with a tiny contract keeps the code easy to modify as writing habits evolve.

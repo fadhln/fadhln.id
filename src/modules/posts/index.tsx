@@ -10,7 +10,7 @@ function getPostDate(value?: string) {
   return value ? formatDate(new Date(value), "date-month-year-long") : "-";
 }
 
-function Posts() {
+function Posts({ tag }: { tag?: string }) {
   const posts = getMarkdownFiles("posts")
     .map((fileName) => getPostInformation("posts", fileName))
     .filter((post): post is PostFrontmatter => post !== undefined)
@@ -19,6 +19,9 @@ function Posts() {
       const bDate = b.updated_at ?? b.created_at ?? "";
       return bDate.localeCompare(aDate);
     });
+  const tags = [...new Set(posts.flatMap((post) => post.tags ?? []))].sort();
+  const activeTag = tag && tags.includes(tag) ? tag : undefined;
+  const filteredPosts = activeTag ? posts.filter((post) => post.tags?.includes(activeTag)) : posts;
 
   return (
     <PageLayout
@@ -27,9 +30,36 @@ function Posts() {
         title: "Posts",
       }}
     >
-      {posts.length ? (
+      {tags.length > 0 && (
+        <nav aria-label="Filter posts by tag" className="mb-8 flex flex-wrap gap-2">
+          <Link
+            href="/posts"
+            className={`rounded-xs border px-3 py-1 text-xs transition-colors ${
+              !activeTag
+                ? "border-primary bg-primary text-on-primary"
+                : "border-border bg-bg-secondary text-on-bg-secondary hover:border-border-hover"
+            }`}
+          >
+            All
+          </Link>
+          {tags.map((postTag) => (
+            <Link
+              key={postTag}
+              href={`/posts?tag=${encodeURIComponent(postTag)}`}
+              className={`rounded-xs border px-3 py-1 text-xs transition-colors ${
+                activeTag === postTag
+                  ? "border-primary bg-primary text-on-primary"
+                  : "border-border bg-bg-secondary text-on-bg-secondary hover:border-border-hover"
+              }`}
+            >
+              {postTag}
+            </Link>
+          ))}
+        </nav>
+      )}
+      {filteredPosts.length ? (
         <div className="flex flex-col">
-          {posts.map((post) => (
+          {filteredPosts.map((post) => (
             <Link
               key={post.slug}
               href={`/posts/${post.slug}`}
@@ -49,7 +79,9 @@ function Posts() {
         </div>
       ) : (
         <div className="border-border bg-bg-secondary text-on-bg-secondary border p-6">
-          <Text>No posts published yet.</Text>
+          <Text>
+            {activeTag ? `No posts found for “${activeTag}”.` : "No posts published yet."}
+          </Text>
         </div>
       )}
     </PageLayout>

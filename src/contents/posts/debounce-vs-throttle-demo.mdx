@@ -1,0 +1,99 @@
+---
+title: "Building a Debounce vs. Throttle Demo"
+summary: "Designing a synchronized, multi-lane visualizer in React to inspect event timing in real time."
+created_at: "2026-09-06"
+updated_at: "2026-09-06"
+tags: ["frontend", "performance"]
+---
+
+Code snippets show how debounce and throttle functions operate, but they fail to convey how timing delays behave as you type. To make the differences visible, I built an interactive visualizer featuring three synchronized timelines: raw input, debounced output, and throttled output.
+
+Here is how the React component is structured to manage high-frequency events and a four-second sliding window without dropping frames.
+
+## A single dispatch point for three lanes
+
+To ensure the comparison between lanes remains exact, all incoming activity routes through one handler. Whether the user types in an input field or clicks a simulation button, `fireEvent` captures a high-resolution timestamp from `performance.now()` and dispatches to all three strategies simultaneously:
+
+```tsx
+function fireEvent() {
+  const time = performance.now();
+  mark("raw", time);
+
+  window.clearTimeout(debounceTimer.current);
+  debounceTimer.current = window.setTimeout(() => mark("debounce", performance.now()), delay);
+
+  if (time >= throttleUntil.current) {
+    mark("throttle", time);
+    throttleUntil.current = time + delay;
+  }
+}
+```
+
+Using `useRef` for timers and throttle deadlines keeps timing bookkeeping outside the React render cycle, avoiding unnecessary re-renders during fast keystrokes.
+
+## Driving the 4-second sliding timeline
+
+The visualization displays a rolling four-second history. The right edge represents the current moment (`0s`), while older marks scroll toward the left until they fall off at `-4.0s`.
+
+A single 100ms interval advances the clock and evicts expired event marks from state:
+
+```tsx
+useEffect(() => {
+  const timer = window.setInterval(() => {
+    const time = performance.now();
+    setNow(time);
+
+    setMarks((current) => {
+      const next = Object.fromEntries(
+        Object.entries(current).map(([lane, laneMarks]) => [
+          lane,
+          laneMarks.filter((mark) => time - mark.time < WINDOW_MS),
+        ]),
+      ) as Record<Lane, Mark[]>;
+
+      const hasChanged = Object.entries(current).some(
+        ([lane, laneMarks]) => next[lane as Lane].length !== laneMarks.length,
+      );
+
+      return hasChanged ? next : current;
+    });
+  }, 100);
+
+  return () => window.clearInterval(timer);
+}, []);
+```
+
+Checking whether any lane's mark count actually changed before returning `next` prevents state churn when the timeline is idle.
+
+## Converting timestamps to CSS percentages
+
+Each event marker on the timeline calculates its horizontal position by comparing its creation timestamp to the current clock tick:
+
+```tsx
+const position = Math.min(99.5, Math.max(0.5, 100 - ((now - mark.time) / WINDOW_MS) * 100));
+```
+
+Applying this percentage to `style={{ left: position + "%" }}` lets CSS handle marker positioning along the timeline track. The event count displayed beside each lane is derived straight from `marks.length`, keeping the numeric counter and visible dots in sync.
+
+## Generating reproducible event bursts
+
+Typing into a text box works well for informal testing, but verifying boundary edge cases (like how a debounce handles rapid bursts right around the delay window) requires repeatable inputs.
+
+The component includes a burst generator that queues twelve events spaced 80ms apart:
+
+```tsx
+function simulateBurst() {
+  burstTimers.current.forEach(window.clearTimeout);
+  burstTimers.current = Array.from({ length: 12 }, (_, index) =>
+    window.setTimeout(fireEvent, index * 80),
+  );
+}
+```
+
+Firing events at a predictable cadence makes it easy to confirm that the throttle triggers periodically throughout the burst while the debounced lane remains quiet until the final timer resolves.
+
+## Interactive component
+
+Try typing in the text input below, switch delay presets, or trigger the burst simulation:
+
+<DebounceThrottle />

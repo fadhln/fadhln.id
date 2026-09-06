@@ -2,6 +2,7 @@ import { Suspense } from "react";
 
 import { type EvaluateOptions, evaluate } from "next-mdx-remote-client/rsc";
 
+import { BreadcrumbNav } from "-/modules/shared/components/Layout";
 import ErrorView from "-/modules/shared/components/View/ErrorView";
 import LoadingView from "-/modules/shared/components/View/LoadingView";
 import { components } from "-/modules/shared/components/mdx";
@@ -9,7 +10,6 @@ import type { PostFrontmatter } from "-/modules/shared/types/file";
 import { getMarkdownExtension, getSource } from "-/modules/shared/utils/file";
 import { plugins } from "-/modules/shared/utils/mdx";
 
-import BreadcrumbNav from "./components/BreadcrumbNav";
 import { bitsComponents } from "./components/mdx";
 
 async function BitsDetail({ params }: PageProps<"/bits/[slug]">) {
@@ -44,7 +44,7 @@ async function BitsDetail({ params }: PageProps<"/bits/[slug]">) {
 
   return (
     <div className="flex h-full flex-col">
-      <BreadcrumbNav title={frontmatter.title} />
+      <BreadcrumbNav section="Bits" sectionHref="/bits" title={frontmatter.title} />
       <div className="flex-1">
         {error ? (
           <ErrorView error={error} />

@@ -71,3 +71,46 @@ body {
   background-color: var(--color-selection-bg);
   color: var(--color-selection-text);
 }
+
+/* MDX code blocks */
+pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  background: transparent;
+  color: var(--color-on-bg);
+}
+
+pre code .hljs-comment,
+pre code .hljs-quote {
+  color: var(--color-on-bg-muted);
+}
+
+pre code .hljs-keyword,
+pre code .hljs-selector-tag,
+pre code .hljs-built_in,
+pre code .hljs-type {
+  color: var(--color-info-text);
+}
+
+pre code .hljs-string,
+pre code .hljs-attr,
+pre code .hljs-template-variable {
+  color: var(--color-success-text);
+}
+
+pre code .hljs-number,
+pre code .hljs-literal,
+pre code .hljs-symbol {
+  color: var(--color-warning-text);
+}
+
+pre code .hljs-title,
+pre code .hljs-title.function_,
+pre code .hljs-title.class_ {
+  color: var(--color-primary);
+}
+
+pre code .hljs-meta,
+pre code .hljs-doctag {
+  color: var(--color-error-text);
+}

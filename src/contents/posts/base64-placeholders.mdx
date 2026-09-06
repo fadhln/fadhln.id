@@ -1,0 +1,70 @@
+---
+title: "Making Media Feel Faster with Tiny Placeholders"
+summary: "Using inline 30px base64 previews to eliminate blank loading boxes on slow connections."
+created_at: "2026-09-05"
+updated_at: "2026-09-05"
+tags: ["frontend", "performance"]
+---
+
+On a fast connection, video cards with high-resolution poster images load almost immediately. Throttle the network down to Slow 3G in DevTools, though, and the cards sit as blank rectangles for several seconds while 100KB+ images crawl across the wire.
+
+The layout holds its shape, but the page feels sluggish. To fill that gap between the initial HTML paint and the video asset finishing its download, I inline a tiny, blurred first-frame preview directly in the document.
+
+## Inlining a 30-pixel preview
+
+Instead of making the browser fetch another file over the network, you can generate a 30-pixel wide PNG and convert it to a base64 data URL. At 30 pixels, the image compresses down to roughly 400 to 600 bytes of text.
+
+Because the data URL lives directly inside the markup, the browser decodes and paints it on the very first frame. The severe pixelation is masked with CSS blur, providing immediate color and composition while the real media streams in.
+
+```tsx
+<div className="relative aspect-video overflow-hidden">
+  {blurDataURL && (
+    <img
+      aria-hidden="true"
+      alt=""
+      src={blurDataURL}
+      className="absolute inset-0 h-full w-full scale-105 object-cover blur-lg"
+    />
+  )}
+  <video
+    poster={posterUrl}
+    autoPlay
+    loop
+    muted
+    playsInline
+    className="relative h-full w-full object-cover"
+  />
+</div>
+```
+
+## Natural CSS layering
+
+The placeholder sits in an absolutely positioned `<img>` behind the video element. The `<video>` tag sits on top with a matching aspect ratio and `object-cover`.
+
+When the video finishes buffering and starts playback, it naturally covers the blurred preview beneath it. This setup avoids JavaScript loading states, opacity transitions, or intersection observers. The browser handles the visual handoff natively.
+
+For accessibility, the blurred placeholder is purely decorative. Setting `aria-hidden="true"` removes it from the accessibility tree, and an empty `alt=""` prevents screen readers from announcing an unnamed image tag.
+
+## Generating placeholders with ffmpeg
+
+You can produce the base64 string from an image or video frame with a single terminal pipeline:
+
+```bash
+ffmpeg -i poster.jpg -vf "scale=30:-1" -frames:v 1 -f image2pipe -vcodec png - | base64 | tr -d '\n'
+```
+
+- `scale=30:-1`: resizes the width to 30 pixels while preserving the aspect ratio.
+- `-frames:v 1`: captures only the first frame.
+- `-f image2pipe -vcodec png -`: pipes raw PNG bytes directly to standard output.
+- `base64 | tr -d '\n'`: encodes the stream into a clean string without newline breaks.
+
+Prepend `data:image/png;base64,` to that output, and the string is ready to store in your post or card metadata.
+
+## The trade-offs
+
+Inlining data into the page payload has concrete costs:
+
+- **HTML and bundle weight:** Fifteen placeholders add roughly 8 to 10KB to the transferred HTML or JavaScript bundle. That cost is downloaded and parsed even if the user never scrolls down to the media cards.
+- **Manual regeneration:** Updating a video poster requires regenerating the base64 string. A build script can automate this step, but it remains a build-time dependency.
+
+This pattern fits fixed collections of media cards or hero sections where initial visual completeness matters most. For dynamic feeds or galleries with hundreds of images, dynamic blur solutions like BlurHash or server-rendered thumbnails remain the more sensible path.

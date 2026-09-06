@@ -1,5 +1,6 @@
 import type { PropsWithChildren } from "react";
 
+import BreadcrumbNav, { type BreadcrumbNavProps } from "./BreadcrumbNav";
 import Cover from "./Cover";
 
 type PageLayoutProps = {
@@ -7,14 +8,17 @@ type PageLayoutProps = {
     number?: string;
     title: string;
   };
+  breadcrumbs?: BreadcrumbNavProps;
 };
 
-function PageLayout({ children, cover }: PropsWithChildren<PageLayoutProps>) {
+function PageLayout({ children, cover, breadcrumbs }: PropsWithChildren<PageLayoutProps>) {
   return (
     <div className="flex w-full flex-1 flex-col items-center">
       {cover && <Cover number={cover.number} title={cover.title} />}
-      <div className="bg-bg border-border mx-6 w-full max-w-5xl flex-1 border-x p-12">
-        {children}
+
+      <div className="bg-bg border-border mx-6 w-full max-w-5xl flex-1 border-x">
+        {breadcrumbs && <BreadcrumbNav {...breadcrumbs} />}
+        <div className="p-12">{children}</div>
       </div>
     </div>
   );

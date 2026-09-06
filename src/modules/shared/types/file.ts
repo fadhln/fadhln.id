@@ -24,6 +24,7 @@ export type BitPlaceholder = {
 export type PostFrontmatter = BaseFrontmatter & {
   title?: string;
   summary?: string;
+  tags?: string[];
   slug: string;
   video?: BitVideo;
   placeholder?: BitPlaceholder;

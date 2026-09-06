@@ -1,5 +1,6 @@
 /** biome-ignore-all lint/complexity/useLiteralKeys: Used for `containerProperties` */
 import recmaMdxImportReact from "recma-mdx-import-react";
+import rehypeHighlight from "rehype-highlight";
 import rehypePreLanguage from "rehype-pre-language";
 import rehypeSlug from "rehype-slug";
 import remarkFlexibleContainers, {
@@ -32,6 +33,7 @@ const remarkPlugins: PluggableList = [
 
 // Rehype plugins: transform HTML AST (HTML-level transforms)
 const rehypePlugins: PluggableList = [
+  rehypeHighlight, // Add syntax highlighting to fenced code blocks
   rehypeSlug, // Add id attributes to headings for anchor links
   rehypePreLanguage, // Add data-language to <pre> elements for language labels
 ];
