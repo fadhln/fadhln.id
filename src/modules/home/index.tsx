@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { Button } from "../shared/components/Button";
 import { PageLayout } from "../shared/components/Layout";
+import BitsSection from "./components/BitsSection";
 import CopyEmail from "./components/CopyEmail";
 
 function Home() {
@@ -28,6 +29,7 @@ function Home() {
         </Button>
         <CopyEmail />
       </div>
+      <BitsSection />
     </PageLayout>
   );
 }
