@@ -5,6 +5,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+import { Badge } from "-/modules/shared/components/Badge";
 import { motion } from "motion/react";
 
 import { useSideBarContext } from "./contexts/SideBarProvider";
@@ -13,6 +14,7 @@ type SideBarContentItem = {
   name: string;
   number: string;
   link: string;
+  status?: "wip";
 };
 
 type SideBarContentSection = {
@@ -33,8 +35,8 @@ const SIDEBAR_CONTENT: SideBarContentSection[] = [
     content: [
       { name: "Bits", number: "03", link: "/bits" },
       { name: "Posts", number: "04", link: "/posts" },
-      { name: "Notes", number: "05", link: "/notes" },
-      { name: "Resources", number: "06", link: "/resources" },
+      { name: "Notes", number: "05", link: "/notes", status: "wip" },
+      { name: "Resources", number: "06", link: "/resources", status: "wip" },
     ],
   },
   {
@@ -63,7 +65,8 @@ function SideNav() {
     () =>
       pathname === "/"
         ? "/"
-        : (allItems.find((i) => i.link !== "/" && pathname.startsWith(i.link))?.link ?? "/"),
+        : (allItems.find((i) => !i.status && i.link !== "/" && pathname.startsWith(i.link))?.link ??
+          "/"),
     [pathname],
   );
 
@@ -126,24 +129,44 @@ function SideNav() {
               {section.title}
             </p>
             <ul className="mt-2 flex flex-col">
-              {section.content.map((item) => (
-                <li key={item.name} className="flex">
-                  <Link
-                    href={item.link}
-                    ref={(el) => registerItem(item.link, el)}
-                    className={`flex w-full items-baseline justify-between px-4 py-1 transition-colors ${
-                      activeLink === item.link
-                        ? "text-on-bg"
-                        : "text-on-bg-secondary hover:text-on-bg"
-                    }`}
-                  >
-                    <span>{item.name}</span>
+              {section.content.map((item) => {
+                const content = (
+                  <>
+                    <span className="flex items-center gap-2">
+                      <span>{item.name}</span>
+                      {item.status === "wip" && <Badge>WIP</Badge>}
+                    </span>
                     <span className="text-on-bg-muted font-mono text-sm font-light">
                       {item.number}
                     </span>
-                  </Link>
-                </li>
-              ))}
+                  </>
+                );
+
+                return (
+                  <li key={item.name} className="flex">
+                    {item.status === "wip" ? (
+                      <span
+                        aria-disabled="true"
+                        className="text-on-bg-muted flex w-full cursor-not-allowed items-baseline justify-between px-4 py-1"
+                      >
+                        {content}
+                      </span>
+                    ) : (
+                      <Link
+                        href={item.link}
+                        ref={(el) => registerItem(item.link, el)}
+                        className={`flex w-full items-baseline justify-between px-4 py-1 transition-colors ${
+                          activeLink === item.link
+                            ? "text-on-bg"
+                            : "text-on-bg-secondary hover:text-on-bg"
+                        }`}
+                      >
+                        {content}
+                      </Link>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
           </motion.div>
         ))}
