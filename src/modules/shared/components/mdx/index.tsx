@@ -24,4 +24,7 @@ export const components: MDXComponents = {
   li: ({ className, ...props }: ComponentPropsWithoutRef<"li">) => (
     <li className={cn(className, "ml-4 list-disc")} {...props} />
   ),
+  p: ({ className, ...props }: ComponentPropsWithoutRef<"p">) => (
+    <p className={cn(className, "pt-2 leading-normal")} {...props} />
+  ),
 };

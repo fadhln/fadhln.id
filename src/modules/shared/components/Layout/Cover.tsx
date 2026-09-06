@@ -10,9 +10,9 @@ function Cover({ number, title }: { number?: string; title: string }) {
           enableMouseInteraction={true}
           mouseRadius={0.5}
           colorNum={4}
-          waveAmplitude={0.1}
-          waveFrequency={1.2}
-          waveSpeed={0.125}
+          waveAmplitude={0.05}
+          waveFrequency={1}
+          waveSpeed={0.05}
           backgroundColor={[0.09, 0.13, 0.64]}
         />
       </div>

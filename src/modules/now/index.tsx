@@ -60,7 +60,9 @@ async function Now() {
       }}
     >
       <Suspense fallback={<LoadingView />}>
-        <div className="text-on-bg-secondary text-base leading-loose tracking-tight">{content}</div>
+        <div className="text-on-bg-secondary flex flex-col gap-4 text-base tracking-tight">
+          {content}
+        </div>
       </Suspense>
       <div className="shadow-border-t mt-8 flex justify-between pt-4">
         <div className="flex flex-col gap-2 text-xs">
