@@ -1,24 +1,11 @@
 import Link from "next/link";
 
+import { getPostDate, getPosts } from "-/modules/posts/utils";
 import { PageLayout } from "-/modules/shared/components/Layout";
 import Text from "-/modules/shared/components/Text";
-import type { PostFrontmatter } from "-/modules/shared/types/file";
-import { formatDate } from "-/modules/shared/utils/date";
-import { getMarkdownFiles, getPostInformation } from "-/modules/shared/utils/file";
-
-function getPostDate(value?: string) {
-  return value ? formatDate(new Date(value), "date-month-year-long") : "-";
-}
 
 function Posts({ tag }: { tag?: string }) {
-  const posts = getMarkdownFiles("posts")
-    .map((fileName) => getPostInformation("posts", fileName))
-    .filter((post): post is PostFrontmatter => post !== undefined)
-    .sort((a, b) => {
-      const aDate = a.updated_at ?? a.created_at ?? "";
-      const bDate = b.updated_at ?? b.created_at ?? "";
-      return bDate.localeCompare(aDate);
-    });
+  const posts = getPosts();
   const tags = [...new Set(posts.flatMap((post) => post.tags ?? []))].sort();
   const activeTag = tag && tags.includes(tag) ? tag : undefined;
   const filteredPosts = activeTag ? posts.filter((post) => post.tags?.includes(activeTag)) : posts;
@@ -31,7 +18,7 @@ function Posts({ tag }: { tag?: string }) {
       }}
     >
       {tags.length > 0 && (
-        <nav aria-label="Filter posts by tag" className="mb-8 flex flex-wrap gap-2">
+        <nav aria-label="Filter posts by tag" className="mb-4 flex flex-wrap gap-2">
           <Link
             href="/posts"
             className={`rounded-xs border px-3 py-1 text-xs transition-colors ${
@@ -63,7 +50,7 @@ function Posts({ tag }: { tag?: string }) {
             <Link
               key={post.slug}
               href={`/posts/${post.slug}`}
-              className="group border-border hover:bg-bg-secondary flex items-baseline justify-between gap-4 border-b py-4 transition-colors first:pt-0"
+              className="group border-border hover:bg-bg-secondary flex items-baseline justify-between gap-4 border-b py-4 transition-colors first:border-t"
             >
               <div>
                 <Text className="group-hover:text-on-bg">{post.title ?? post.slug}</Text>
@@ -71,7 +58,7 @@ function Posts({ tag }: { tag?: string }) {
                   <Text className="text-on-bg-secondary mt-1 text-sm">{post.summary}</Text>
                 )}
               </div>
-              <Text variant="label" className="shrink-0">
+              <Text variant="label" className="shrink-0 text-xs">
                 {getPostDate(post.updated_at ?? post.created_at)}
               </Text>
             </Link>

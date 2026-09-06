@@ -4,6 +4,7 @@ import { Button } from "../shared/components/Button";
 import { PageLayout } from "../shared/components/Layout";
 import BitsSection from "./components/BitsSection";
 import CopyEmail from "./components/CopyEmail";
+import PostsSection from "./components/PostsSection";
 
 function Home() {
   return (
@@ -30,6 +31,7 @@ function Home() {
         <CopyEmail />
       </div>
       <BitsSection />
+      <PostsSection />
     </PageLayout>
   );
 }
