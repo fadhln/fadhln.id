@@ -30,7 +30,7 @@ function Home() {
                 to exciting new challenges.
               </p>
               <div className="mt-6 flex gap-3">
-                <Button variant="primary" render={<Link href={"/about"} />} nativeButton={false}>
+                <Button variant="primary" render={<Link href="/about" />} nativeButton={false}>
                   About Me
                 </Button>
                 <CopyEmail />
@@ -43,6 +43,21 @@ function Home() {
         </StaggerItem>
         <StaggerItem>
           <PostsSection />
+        </StaggerItem>
+        <StaggerItem>
+          <section className="bg-bg-secondary border-border grid gap-6 border p-4 md:grid-cols-[1fr_auto] md:items-end">
+            <div>
+              <p className="text-on-bg-muted font-mono text-xs tracking-widest uppercase">
+                Get in touch
+              </p>
+              <p className="mt-2 max-w-xl text-xl leading-relaxed font-medium tracking-tight">
+                Have a project in mind or want to work together? Let&apos;s talk.
+              </p>
+            </div>
+            <Button variant="primary" render={<Link href="/contact" />} nativeButton={false}>
+              Contact me
+            </Button>
+          </section>
         </StaggerItem>
       </Stagger>
     </PageLayout>
