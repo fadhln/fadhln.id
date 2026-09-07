@@ -24,6 +24,7 @@ type Turnstile = {
     },
   ) => string;
   reset: (widgetId?: string) => void;
+  remove?: (widgetId: string) => void;
 };
 
 declare global {
@@ -63,6 +64,14 @@ function ContactForm() {
 
   useEffect(() => {
     renderTurnstile();
+
+    return () => {
+      const id = widgetId.current;
+      if (id && window.turnstile?.remove) {
+        window.turnstile.remove(id);
+        widgetId.current = undefined;
+      }
+    };
   }, [renderTurnstile]);
 
   async function submit(values: ContactValues) {

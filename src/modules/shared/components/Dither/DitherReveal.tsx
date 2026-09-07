@@ -61,6 +61,7 @@ void main() {
   float reveal = step(threshold, progress);
 
   gl_FragColor = vec4(color.rgb, color.a * reveal);
+  #include <colorspace_fragment>
 }
 `;
 

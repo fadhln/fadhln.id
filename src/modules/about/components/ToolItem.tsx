@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import Popover from "-/modules/shared/components/Popover";
 import { ExternalLinkIcon } from "@radix-ui/react-icons";
 
@@ -9,13 +11,18 @@ export function ToolItem({ tool }: { tool: Tool }) {
   return (
     <Popover>
       <Popover.Trigger className="border-border bg-bg-elevated hover:bg-bg-secondary hover:border-border-hover group focus-visible:outline-primary data-popup-open:border-primary data-popup-open:bg-bg-secondary flex w-full cursor-pointer items-center gap-3 rounded-xs border p-3 text-left transition-colors focus-visible:outline-2 focus-visible:outline-offset-2">
-        <span className="border-border bg-bg-secondary text-on-bg-secondary group-hover:text-on-bg group-hover:bg-bg-elevated flex size-8 shrink-0 items-center justify-center rounded-xs border transition-colors">
-          <span
+        <span
+          className="border-border group-hover:bg-bg-elevated relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-xs border transition-colors"
+          style={{ backgroundColor: tool.iconBackground }}
+        >
+          <Image
+            src={tool.icon}
+            alt=""
             aria-hidden="true"
-            className="text-on-bg text-xxs font-mono font-semibold tracking-wider uppercase"
-          >
-            {tool.shortCode}
-          </span>
+            fill
+            sizes="32px"
+            className="object-contain p-1"
+          />
         </span>
         <div className="min-w-0 flex-1">
           <p className="text-on-bg truncate text-sm font-medium">{tool.name}</p>
@@ -28,13 +35,18 @@ export function ToolItem({ tool }: { tool: Tool }) {
             <Popover.Arrow />
             <div className="border-border mb-2 flex items-center justify-between border-b pb-2">
               <div className="flex items-center gap-2">
-                <span className="border-border bg-bg-secondary flex size-5 items-center justify-center rounded-xs border">
-                  <span
+                <span
+                  className="border-border relative flex size-5 items-center justify-center overflow-hidden rounded-xs border"
+                  style={{ backgroundColor: tool.iconBackground }}
+                >
+                  <Image
+                    src={tool.icon}
+                    alt=""
                     aria-hidden="true"
-                    className="text-on-bg text-xxs font-mono font-semibold tracking-wider uppercase"
-                  >
-                    {tool.shortCode}
-                  </span>
+                    fill
+                    sizes="20px"
+                    className="object-contain p-0.5"
+                  />
                 </span>
                 <Popover.Title className="text-on-bg text-sm font-semibold">
                   {tool.name}

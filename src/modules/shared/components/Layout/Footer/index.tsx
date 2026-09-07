@@ -1,13 +1,8 @@
 import Image from "next/image";
 
-import BackToTop from "./BackToTop";
+import { SOCIAL_LINKS } from "-/modules/shared/constants/social";
 
-const SOCIAL_LINKS = [
-  { name: "LinkedIn", url: "https://linkedin.com/in/fadhln" },
-  { name: "GitHub", url: "https://github.com/fadhln" },
-  { name: "Threads", url: "https://threads.net/@m_fadhln" },
-  { name: "Instagram", url: "https://instagram.com/m_fadhln" },
-] as const;
+import BackToTop from "./BackToTop";
 
 function Footer() {
   return (

@@ -1,7 +1,8 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { PageLayout } from "-/modules/shared/components/Layout";
-import { PersonIcon } from "@radix-ui/react-icons";
+import { ExternalLinkIcon } from "@radix-ui/react-icons";
 
 import { Badge } from "../shared/components/Badge";
 import { Button } from "../shared/components/Button";
@@ -41,21 +42,24 @@ function About() {
                   <p className="text-on-bg-muted font-mono text-xs tracking-widest uppercase">
                     Profile
                   </p>
-                  <span className="text-on-bg-muted text-xxs font-mono uppercase">Photo</span>
                 </div>
                 <div className="border-border bg-bg-secondary relative aspect-4/3 w-full overflow-hidden border sm:aspect-square">
-                  <div className="text-on-bg-muted flex h-full w-full flex-col items-center justify-center gap-2">
-                    <PersonIcon className="size-10" />
-                    <span className="text-xxs font-mono tracking-wider uppercase">
-                      Profile photo
-                    </span>
-                    <span className="text-on-bg-muted/70 font-mono text-[10px]">
-                      public/profile.jpg
-                    </span>
-                  </div>
+                  <StaggerItem inView className="absolute inset-0">
+                    <Image
+                      src="/profile.webp"
+                      alt="Muhammad Fadhlan"
+                      fill
+                      sizes="(min-width: 768px) 40vw, 100vw"
+                      className="object-cover"
+                    />
+                  </StaggerItem>
                 </div>
               </div>
-              <dl className="border-border mt-6 border-t">
+              <dl className="border-border mt-6 tracking-normal">
+                <div className="border-border flex items-baseline justify-between border-b py-2.5">
+                  <dt className="text-on-bg-muted text-xs uppercase">Name</dt>
+                  <dd className="text-sm font-medium">Fadhlan</dd>
+                </div>
                 <div className="border-border flex items-baseline justify-between border-b py-2.5">
                   <dt className="text-on-bg-muted text-xs uppercase">Location</dt>
                   <dd className="text-sm font-medium">Indonesia · UTC+7</dd>
@@ -76,12 +80,12 @@ function About() {
             aria-labelledby="background-title"
             className="grid gap-8 md:grid-cols-[0.7fr_1.3fr]"
           >
-            <div>
+            <div className="md:sticky md:top-8 md:self-start">
               <p className="text-on-bg-muted font-mono text-xs tracking-widest uppercase">
                 01 / Background
               </p>
               <h2 id="background-title" className="mt-3 text-2xl font-semibold tracking-tight">
-                What I actually do
+                What I do
               </h2>
             </div>
             <div className="text-on-bg-secondary flex flex-col gap-4 text-base leading-relaxed tracking-tight">
@@ -90,11 +94,6 @@ function About() {
                 care about the seam between design and engineering: translating messy requirements
                 into clean UI components, keeping state predictable, and avoiding unneeded
                 dependencies.
-              </p>
-              <p>
-                Recently, my side work has ranged from building domain tools (like a gas station
-                reconciliation app) to experimenting with interactive UI mechanics, media loading
-                strategies, and generative shaders.
               </p>
               <p>
                 This website serves as my public notebook: interactive experiments live in{" "}
@@ -120,30 +119,74 @@ function About() {
             aria-labelledby="experience-title"
             className="grid gap-8 md:grid-cols-[0.7fr_1.3fr]"
           >
-            <div>
+            <div className="md:sticky md:top-8 md:self-start">
               <p className="text-on-bg-muted font-mono text-xs tracking-widest uppercase">
                 02 / Experience
               </p>
               <h2 id="experience-title" className="mt-3 text-2xl font-semibold tracking-tight">
                 Where I have worked
               </h2>
+              <a
+                href="https://linkedin.com/in/fadhln"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-on-bg-secondary hover:text-on-bg mt-3 inline-block text-sm underline underline-offset-2 transition-colors"
+              >
+                Get my full resume on LinkedIn →
+              </a>
             </div>
             <Stagger inView staggerDelay={0.12} className="flex flex-col">
-              {EXPERIENCES.map((exp) => (
+              {EXPERIENCES.map((experience) => (
                 <StaggerItem
-                  key={exp.role + exp.company}
+                  key={experience.company}
                   className="border-border border-b py-5 first:pt-0 last:border-b-0"
                 >
-                  <div className="flex flex-wrap items-baseline justify-between gap-2">
-                    <h3 className="text-on-bg text-base font-semibold">{exp.role}</h3>
-                    <span className="text-on-bg-muted font-mono text-xs">{exp.period}</span>
+                  <div className="flex gap-3">
+                    <div
+                      className="border-border relative flex size-10 shrink-0 items-center justify-center overflow-hidden border"
+                      style={{ backgroundColor: experience.companyLogoBackground }}
+                    >
+                      <Image
+                        src={experience.companyLogo}
+                        alt={`${experience.company} logo`}
+                        fill
+                        sizes="40px"
+                        className="object-contain p-1"
+                      />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <a
+                        href={experience.companyUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-on-bg inline-flex items-center gap-1 text-base font-semibold hover:underline"
+                      >
+                        {experience.company}
+                        <ExternalLinkIcon className="size-3" />
+                      </a>
+                      <p className="text-on-bg-secondary mt-0.5 text-sm font-medium">
+                        {experience.location}
+                      </p>
+                      <Stagger inView staggerDelay={0.08} className="mt-4 flex flex-col">
+                        {experience.roles.map((role) => (
+                          <StaggerItem
+                            key={`${experience.company}-${role.role}`}
+                            className="border-border border-t py-4 first:pt-3 last:pb-0"
+                          >
+                            <div className="flex flex-wrap items-baseline justify-between gap-2">
+                              <h3 className="text-on-bg text-sm font-semibold">{role.role}</h3>
+                              <span className="text-on-bg-muted font-mono text-xs">
+                                {role.period}
+                              </span>
+                            </div>
+                            <p className="text-on-bg-secondary mt-2 text-sm leading-relaxed">
+                              {role.description}
+                            </p>
+                          </StaggerItem>
+                        ))}
+                      </Stagger>
+                    </div>
                   </div>
-                  <p className="text-on-bg-secondary mt-0.5 text-sm font-medium">
-                    {exp.company} · {exp.location}
-                  </p>
-                  <p className="text-on-bg-secondary mt-2 text-sm leading-relaxed">
-                    {exp.description}
-                  </p>
                 </StaggerItem>
               ))}
             </Stagger>
@@ -155,7 +198,7 @@ function About() {
             aria-labelledby="tools-title"
             className="border-border grid gap-8 border-y py-8 md:grid-cols-[0.7fr_1.3fr]"
           >
-            <div>
+            <div className="md:sticky md:top-8 md:self-start">
               <p className="text-on-bg-muted font-mono text-xs tracking-widest uppercase">
                 03 / Toolkit
               </p>
@@ -182,21 +225,13 @@ function About() {
             aria-labelledby="credentials-title"
             className="grid gap-8 md:grid-cols-[0.7fr_1.3fr]"
           >
-            <div>
+            <div className="md:sticky md:top-8 md:self-start">
               <p className="text-on-bg-muted font-mono text-xs tracking-widest uppercase">
                 04 / Credentials
               </p>
               <h2 id="credentials-title" className="mt-3 text-2xl font-semibold tracking-tight">
                 Education & Certifications
               </h2>
-              <a
-                href="https://linkedin.com/in/fadhln"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-on-bg-secondary hover:text-on-bg mt-3 inline-block text-sm underline underline-offset-2 transition-colors"
-              >
-                Get my full resume on LinkedIn →
-              </a>
             </div>
             <div className="flex flex-col gap-8">
               <div>
