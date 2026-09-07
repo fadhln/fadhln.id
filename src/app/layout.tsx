@@ -14,8 +14,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://fadhln.id"),
   title: "Index • fadhln.id",
   description: "Personal site by Muhammad Fadhlan",
+  openGraph: {
+    type: "website",
+    siteName: "fadhln.id",
+    url: "/",
+  },
+  twitter: {
+    card: "summary",
+  },
   authors: [
     {
       name: "Muhammad Fadhlan",

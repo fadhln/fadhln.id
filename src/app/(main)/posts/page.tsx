@@ -4,6 +4,8 @@ import Posts from "-/modules/posts";
 
 export const metadata: Metadata = {
   title: "Posts • fadhln.id",
+  description: "Writing by Muhammad Fadhlan",
+  alternates: { canonical: "/posts" },
 };
 
 export default async function PostsPage({ searchParams }: PageProps<"/posts">) {

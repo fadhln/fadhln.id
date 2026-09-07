@@ -13,6 +13,10 @@ export function getMarkdownFiles(...paths: string[]) {
     .filter((filePath: string) => markdownRegex.test(filePath));
 }
 
+export function getSlugs(...paths: string[]) {
+  return getMarkdownFiles(...paths).map((filename) => filename.replace(markdownRegex, ""));
+}
+
 export async function getSource(...paths: string[]) {
   const sourcePath = path.join(process.cwd(), "src", "contents", ...paths);
   if (!fs.existsSync(sourcePath)) return;

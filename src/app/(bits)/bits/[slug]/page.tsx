@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 
 import BitsDetail from "-/modules/bits/detail";
-import { getPostInformation } from "-/modules/shared/utils/file";
+import { getPostInformation, getSlugs } from "-/modules/shared/utils/file";
+
+export function generateStaticParams() {
+  return getSlugs("bits").map((slug) => ({ slug }));
+}
 
 export async function generateMetadata({ params }: PageProps<"/bits/[slug]">): Promise<Metadata> {
   const { slug } = await params;

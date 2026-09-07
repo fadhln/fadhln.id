@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 
 import { type EvaluateOptions, evaluate } from "next-mdx-remote-client/rsc";
+import { notFound } from "next/navigation";
 
 import { BreadcrumbNav } from "-/modules/shared/components/Layout";
 import ErrorView from "-/modules/shared/components/View/ErrorView";
@@ -18,7 +19,7 @@ async function BitsDetail({ params }: PageProps<"/bits/[slug]">) {
   const filename = `${slug}.mdx` as const;
   const source = await getSource("bits", filename);
   if (!source) {
-    return <ErrorView error="This page is empty." />;
+    notFound();
   }
 
   const format = getMarkdownExtension(filename);

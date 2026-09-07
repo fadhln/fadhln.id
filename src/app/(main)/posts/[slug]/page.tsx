@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 
 import PostDetail from "-/modules/posts/detail";
-import { getPostInformation } from "-/modules/shared/utils/file";
+import { getPostInformation, getSlugs } from "-/modules/shared/utils/file";
+
+export function generateStaticParams() {
+  return getSlugs("posts").map((slug) => ({ slug }));
+}
 
 type PostPageProps = PageProps<"/posts/[slug]">;
 

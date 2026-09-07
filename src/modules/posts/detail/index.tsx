@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 
 import { type EvaluateOptions, evaluate } from "next-mdx-remote-client/rsc";
+import { notFound } from "next/navigation";
 
 import { bitsComponents } from "-/modules/bits/detail/components/mdx";
 import { Badge } from "-/modules/shared/components/Badge";
@@ -22,7 +23,7 @@ async function PostDetail({ params }: PageProps<"/posts/[slug]">) {
   const source = await getSource("posts", filename);
 
   if (!source) {
-    return <ErrorView error="This page is empty." />;
+    notFound();
   }
 
   const options: EvaluateOptions = {
