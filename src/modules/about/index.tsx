@@ -245,9 +245,12 @@ function About() {
                         <h3 className="text-on-bg text-base font-semibold">{edu.degree}</h3>
                         <span className="text-on-bg-muted font-mono text-xs">{edu.period}</span>
                       </div>
-                      <p className="text-on-bg-secondary mt-0.5 text-sm font-medium">
-                        {edu.institution} · {edu.location}
-                      </p>
+                      <div className="text-on-bg-secondary mt-0.5 flex flex-wrap items-baseline justify-between gap-2 text-sm font-medium">
+                        <span>
+                          {edu.institution} · {edu.location}
+                        </span>
+                        <span className="text-on-bg font-mono text-xs">GPA {edu.gpa}</span>
+                      </div>
                       <p className="text-on-bg-secondary mt-2 text-sm leading-relaxed">
                         {edu.description}
                       </p>

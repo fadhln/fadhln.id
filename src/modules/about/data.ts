@@ -236,6 +236,7 @@ export const EDUCATION = [
     institution: "Universitas Gadjah Mada",
     location: "Indonesia",
     period: "2018 — 2022",
+    gpa: "3.75 / 4.00",
     description:
       "Major in Electronics and Instrumentation. Coursework in smart systems, algorithms, computer vision, and human-computer interaction.",
   },
