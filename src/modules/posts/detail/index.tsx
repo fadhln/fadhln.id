@@ -57,7 +57,7 @@ async function PostDetail({ params }: PageProps<"/posts/[slug]">) {
           title: frontmatter.title,
         }}
       >
-        <article className="text-on-bg-secondary text-base tracking-tight">
+        <article className="text-on-bg-secondary min-w-0 text-base tracking-tight">
           <header className="mb-8">
             <h1 className="text-on-bg text-4xl font-semibold tracking-tight">
               {frontmatter.title ?? slug}
@@ -72,7 +72,7 @@ async function PostDetail({ params }: PageProps<"/posts/[slug]">) {
             </div>
           )}
           <Suspense fallback={<LoadingView />}>
-            <div className="flex flex-col gap-4">{content}</div>
+            <div className="flex min-w-0 flex-col gap-4">{content}</div>
           </Suspense>
         </article>
         <ContentFooter

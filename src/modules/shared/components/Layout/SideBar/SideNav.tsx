@@ -107,7 +107,7 @@ function SideNav() {
         }}
       />
       <motion.div
-        className="absolute w-full"
+        className="w-full"
         variants={{
           collapsed: { transition: { staggerChildren: 0.05, staggerDirection: -1 } },
           expanded: { transition: { staggerChildren: 0.05 } },

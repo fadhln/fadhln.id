@@ -8,6 +8,7 @@ import { motion } from "motion/react";
 
 import CommitHash from "./CommitHash";
 import LocalTime from "./LocalTime";
+import MobileNav from "./MobileNav";
 import SideNav from "./SideNav";
 import ToggleTrigger from "./ToggleTrigger";
 import SideBarProvider, { useSideBarContext } from "./contexts/SideBarProvider";
@@ -59,6 +60,7 @@ function SideBarContent() {
 function SideBar() {
   return (
     <SideBarProvider>
+      <MobileNav />
       <SideBarContent />
     </SideBarProvider>
   );

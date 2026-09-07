@@ -65,7 +65,7 @@ function BitCard({ href, title, createdAt, updatedAt, video, placeholder }: BitC
         >
           {title}
         </Text>
-        <div className="flex w-full items-center justify-between">
+        <div className="flex w-full flex-wrap items-center justify-between gap-x-2 gap-y-1">
           <Text variant="label" className="text-right text-[10px]">
             Updated {updatedAt}
           </Text>

@@ -14,6 +14,7 @@
   --color-bg-secondary: var(--color-bg-secondary);
   --color-bg-elevated: var(--color-bg-elevated);
   --color-bg-inset: var(--color-bg-inset);
+  --color-bg-overlay: var(--color-bg-overlay);
 
   /* Text */
   --color-on-bg: var(--color-on-bg);
@@ -75,6 +76,8 @@ body {
 /* MDX code blocks */
 pre code.hljs {
   display: block;
+  width: max-content;
+  min-width: 100%;
   overflow-x: auto;
   background: transparent;
   color: var(--color-on-bg);

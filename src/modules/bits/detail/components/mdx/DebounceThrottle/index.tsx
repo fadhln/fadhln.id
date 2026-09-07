@@ -94,7 +94,7 @@ function DebounceThrottle() {
   }
 
   return (
-    <div className="mx-auto flex w-full max-w-4xl flex-col gap-6 px-6 py-8 md:px-8 md:py-10">
+    <div className="mx-auto flex w-full max-w-4xl flex-col gap-6 px-4 py-8 sm:px-6 md:px-8 md:py-10">
       <section aria-labelledby="activity-title">
         <div className="mb-4 flex items-end justify-between">
           <div>
@@ -111,7 +111,10 @@ function DebounceThrottle() {
         </div>
       </section>
 
-      <section className="border-border bg-bg-elevated rounded-xs border p-6" aria-label="Controls">
+      <section
+        className="border-border bg-bg-elevated rounded-xs border p-4 sm:p-6"
+        aria-label="Controls"
+      >
         <div>
           <label
             htmlFor="debounce-throttle-source"

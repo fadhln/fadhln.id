@@ -9,7 +9,7 @@ export type BreadcrumbNavProps = {
 function BreadcrumbNav({ section, sectionHref, title = "" }: BreadcrumbNavProps) {
   return (
     <nav aria-label="Breadcrumb" className="bg-bg-elevated shadow-border-b w-full py-2.5">
-      <div className="text-on-bg-secondary mx-6 flex w-full max-w-5xl items-center gap-2 text-sm">
+      <div className="text-on-bg-secondary mx-3 flex w-full max-w-5xl items-center gap-2 truncate text-sm sm:mx-6">
         <Link href={sectionHref} className="hover:text-on-bg transition-colors">
           {section}
         </Link>

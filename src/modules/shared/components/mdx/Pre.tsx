@@ -29,7 +29,7 @@ function Pre({ className, children, ...props }: PreProps) {
     <pre
       ref={preRef}
       className={cn(
-        "border-border bg-bg-secondary relative my-6 overflow-x-auto rounded-xs border p-4 text-sm leading-relaxed",
+        "border-border bg-bg-secondary relative my-6 max-w-full min-w-0 overflow-x-auto rounded-xs border p-4 text-sm leading-relaxed",
         className,
       )}
       {...props}

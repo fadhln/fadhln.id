@@ -25,9 +25,9 @@ function PageLayout({ children, cover, breadcrumbs }: PropsWithChildren<PageLayo
         />
       )}
 
-      <div className="bg-bg border-border mx-6 w-full max-w-5xl flex-1 border-x">
+      <div className="bg-bg border-border mx-3 w-full max-w-5xl flex-1 border-x sm:mx-6">
         {breadcrumbs && <BreadcrumbNav {...breadcrumbs} />}
-        <div className="p-12">{children}</div>
+        <div className="p-6 sm:p-8 md:p-12">{children}</div>
       </div>
     </div>
   );

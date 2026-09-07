@@ -23,10 +23,10 @@ function About() {
       <div className="flex flex-col gap-16">
         <StaggerItem inView>
           <section className="border-border bg-border grid gap-px border md:grid-cols-[1.4fr_0.6fr]">
-            <div className="bg-primary text-on-primary flex min-h-80 flex-col justify-between p-6 sm:p-8">
+            <div className="bg-primary text-on-primary flex min-h-80 flex-col justify-between p-4 sm:p-6">
               <p className="font-mono text-xs tracking-widest uppercase">Overview</p>
               <div>
-                <h2 className="max-w-xl text-3xl font-semibold tracking-tight sm:text-4xl">
+                <h2 className="mt-4 max-w-xl text-3xl font-semibold tracking-tight sm:text-4xl">
                   Software engineer building interfaces and web applications.
                 </h2>
                 <p className="text-on-primary/80 mt-4 max-w-lg text-base leading-relaxed">
@@ -36,7 +36,7 @@ function About() {
                 </p>
               </div>
             </div>
-            <div className="bg-bg-elevated flex flex-col justify-between p-6">
+            <div className="bg-bg-elevated flex flex-col justify-between p-4 sm:p-6">
               <div>
                 <div className="mb-4 flex items-center justify-between">
                   <p className="text-on-bg-muted font-mono text-xs tracking-widest uppercase">
@@ -55,12 +55,12 @@ function About() {
                   </StaggerItem>
                 </div>
               </div>
-              <dl className="border-border mt-6 tracking-normal">
+              <dl className="border-border mt-6 tracking-normal whitespace-nowrap">
                 <div className="border-border flex items-baseline justify-between border-b py-2.5">
                   <dt className="text-on-bg-muted text-xs uppercase">Name</dt>
                   <dd className="text-sm font-medium">Fadhlan</dd>
                 </div>
-                <div className="border-border flex items-baseline justify-between border-b py-2.5">
+                <div className="border-border flex items-baseline justify-between gap-2 border-b py-2.5">
                   <dt className="text-on-bg-muted text-xs uppercase">Location</dt>
                   <dd className="text-sm font-medium">Indonesia · UTC+7</dd>
                 </div>

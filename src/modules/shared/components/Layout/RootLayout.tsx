@@ -8,8 +8,10 @@ function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <body className="relative mx-auto flex min-h-full max-w-[120rem]">
       <SideBar />
-      <div className="flex flex-1 flex-col">
-        <main className={cn("flex min-h-svh flex-col", styles.diagonalStripes)}>{children}</main>
+      <div className="flex min-w-0 flex-1 flex-col">
+        <main className={cn("flex min-h-svh flex-col pt-12 md:pt-0", styles.diagonalStripes)}>
+          {children}
+        </main>
         <Footer />
       </div>
     </body>

@@ -57,7 +57,7 @@ function Posts({ tag }: { tag?: string }) {
                 <StaggerItem key={post.slug}>
                   <Link
                     href={`/posts/${post.slug}`}
-                    className="group border-border hover:bg-bg-secondary flex items-baseline justify-between gap-4 border-b py-4 transition-colors first:border-t"
+                    className="group border-border hover:bg-bg-secondary flex flex-col gap-2 border-b py-4 transition-colors first:border-t sm:flex-row sm:items-baseline sm:justify-between sm:gap-4"
                   >
                     <div>
                       <Text className="group-hover:text-on-bg">{post.title ?? post.slug}</Text>

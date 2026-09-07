@@ -21,8 +21,8 @@ function Home() {
         <StaggerItem>
           <div className="flex flex-col-reverse justify-between gap-6 md:flex-row md:items-start">
             <div className="max-w-2xl">
-              <p className="text-4xl font-semibold">Hey! I'm Fadhlan.</p>
-              <p className="text-on-bg-secondary mt-1 text-4xl font-medium">
+              <p className="text-3xl font-semibold sm:text-4xl">Hey! I'm Fadhlan.</p>
+              <p className="text-on-bg-secondary mt-1 text-3xl font-medium sm:text-4xl">
                 Software Engineer from <span className="text-on-bg">Indonesia.</span>
               </p>
               <p className="mt-2 text-lg tracking-tight md:max-w-xl">

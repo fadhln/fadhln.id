@@ -10,7 +10,7 @@ type CoverProps = {
 
 function Cover({ number, title, animateTitle, titleStaggerDelay }: CoverProps) {
   return (
-    <div className="text-on-primary bg-brand-600 relative h-64 w-full overflow-hidden">
+    <div className="text-on-primary bg-brand-600 relative h-52 w-full overflow-hidden sm:h-64">
       <div className="absolute top-0 left-1/2 h-full w-screen -translate-x-1/2">
         <Dither
           waveColor={[0.14, 0.31, 1]}
@@ -24,11 +24,13 @@ function Cover({ number, title, animateTitle, titleStaggerDelay }: CoverProps) {
           backgroundColor={[0.09, 0.13, 0.64]}
         />
       </div>
-      <div className="pointer-events-none absolute left-1/2 z-10 mx-auto grid h-full w-full max-w-5xl -translate-x-1/2 grid-cols-2 gap-4 px-12 py-8 text-5xl">
+      <div className="pointer-events-none absolute left-1/2 z-10 mx-auto flex h-full w-full max-w-5xl -translate-x-1/2 flex-col justify-end gap-2 px-6 py-6 text-4xl sm:px-8 sm:py-8 sm:text-5xl md:grid md:grid-cols-2 md:gap-4 md:px-12">
         <div className="flex flex-col justify-end">
-          <span className="text-on-primary font-mono font-semibold">{number}</span>
+          <span className="text-on-primary font-mono text-3xl font-semibold sm:text-5xl">
+            {number}
+          </span>
         </div>
-        <div className="flex flex-col justify-end">
+        <div className="flex min-w-0 flex-col justify-end">
           <CoverTitle animate={animateTitle} staggerDelay={titleStaggerDelay}>
             {title}
           </CoverTitle>
