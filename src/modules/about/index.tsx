@@ -1,0 +1,267 @@
+import Link from "next/link";
+
+import { PageLayout } from "-/modules/shared/components/Layout";
+import { PersonIcon } from "@radix-ui/react-icons";
+
+import { Badge } from "../shared/components/Badge";
+import { Button } from "../shared/components/Button";
+import Stagger, { StaggerItem } from "../shared/components/Stagger";
+import ToolItem from "./components/ToolItem";
+import { CERTIFICATIONS, EDUCATION, EXPERIENCES, TOOLS } from "./data";
+
+function About() {
+  return (
+    <PageLayout
+      cover={{
+        number: "07",
+        title: "About",
+        animateTitle: true,
+      }}
+    >
+      <div className="flex flex-col gap-16">
+        <StaggerItem inView>
+          <section className="border-border bg-border grid gap-px border md:grid-cols-[1.4fr_0.6fr]">
+            <div className="bg-primary text-on-primary flex min-h-80 flex-col justify-between p-6 sm:p-8">
+              <p className="font-mono text-xs tracking-widest uppercase">Overview</p>
+              <div>
+                <h2 className="max-w-xl text-3xl font-semibold tracking-tight sm:text-4xl">
+                  Software engineer building interfaces and web applications.
+                </h2>
+                <p className="text-on-primary/80 mt-4 max-w-lg text-base leading-relaxed">
+                  I am Muhammad Fadhlan, based in Indonesia. I focus on frontend and full-stack
+                  development, creating fast, accessible web apps that solve real operational
+                  problems.
+                </p>
+              </div>
+            </div>
+            <div className="bg-bg-elevated flex flex-col justify-between p-6">
+              <div>
+                <div className="mb-4 flex items-center justify-between">
+                  <p className="text-on-bg-muted font-mono text-xs tracking-widest uppercase">
+                    Profile
+                  </p>
+                  <span className="text-on-bg-muted text-xxs font-mono uppercase">Photo</span>
+                </div>
+                <div className="border-border bg-bg-secondary relative aspect-4/3 w-full overflow-hidden border sm:aspect-square">
+                  <div className="text-on-bg-muted flex h-full w-full flex-col items-center justify-center gap-2">
+                    <PersonIcon className="size-10" />
+                    <span className="text-xxs font-mono tracking-wider uppercase">
+                      Profile photo
+                    </span>
+                    <span className="text-on-bg-muted/70 font-mono text-[10px]">
+                      public/profile.jpg
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <dl className="border-border mt-6 border-t">
+                <div className="border-border flex items-baseline justify-between border-b py-2.5">
+                  <dt className="text-on-bg-muted text-xs uppercase">Location</dt>
+                  <dd className="text-sm font-medium">Indonesia · UTC+7</dd>
+                </div>
+                <div className="flex items-baseline justify-between pt-2.5">
+                  <dt className="text-on-bg-muted text-xs uppercase">Status</dt>
+                  <dd className="text-success-text text-sm font-medium">
+                    <Badge variant="success">Open to work</Badge>
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </section>
+        </StaggerItem>
+
+        <StaggerItem inView>
+          <section
+            aria-labelledby="background-title"
+            className="grid gap-8 md:grid-cols-[0.7fr_1.3fr]"
+          >
+            <div>
+              <p className="text-on-bg-muted font-mono text-xs tracking-widest uppercase">
+                01 / Background
+              </p>
+              <h2 id="background-title" className="mt-3 text-2xl font-semibold tracking-tight">
+                What I actually do
+              </h2>
+            </div>
+            <div className="text-on-bg-secondary flex flex-col gap-4 text-base leading-relaxed tracking-tight">
+              <p>
+                I spend most of my working hours building with TypeScript, React, Next.js, and Go. I
+                care about the seam between design and engineering: translating messy requirements
+                into clean UI components, keeping state predictable, and avoiding unneeded
+                dependencies.
+              </p>
+              <p>
+                Recently, my side work has ranged from building domain tools (like a gas station
+                reconciliation app) to experimenting with interactive UI mechanics, media loading
+                strategies, and generative shaders.
+              </p>
+              <p>
+                This website serves as my public notebook: interactive experiments live in{" "}
+                <Link href="/bits" className="text-on-bg underline underline-offset-2">
+                  Bits
+                </Link>
+                , technical write-ups in{" "}
+                <Link href="/posts" className="text-on-bg underline underline-offset-2">
+                  Posts
+                </Link>
+                , and current projects in{" "}
+                <Link href="/now" className="text-on-bg underline underline-offset-2">
+                  Now
+                </Link>
+                .
+              </p>
+            </div>
+          </section>
+        </StaggerItem>
+
+        <StaggerItem inView>
+          <section
+            aria-labelledby="experience-title"
+            className="grid gap-8 md:grid-cols-[0.7fr_1.3fr]"
+          >
+            <div>
+              <p className="text-on-bg-muted font-mono text-xs tracking-widest uppercase">
+                02 / Experience
+              </p>
+              <h2 id="experience-title" className="mt-3 text-2xl font-semibold tracking-tight">
+                Where I have worked
+              </h2>
+            </div>
+            <Stagger inView staggerDelay={0.12} className="flex flex-col">
+              {EXPERIENCES.map((exp) => (
+                <StaggerItem
+                  key={exp.role + exp.company}
+                  className="border-border border-b py-5 first:pt-0 last:border-b-0"
+                >
+                  <div className="flex flex-wrap items-baseline justify-between gap-2">
+                    <h3 className="text-on-bg text-base font-semibold">{exp.role}</h3>
+                    <span className="text-on-bg-muted font-mono text-xs">{exp.period}</span>
+                  </div>
+                  <p className="text-on-bg-secondary mt-0.5 text-sm font-medium">
+                    {exp.company} · {exp.location}
+                  </p>
+                  <p className="text-on-bg-secondary mt-2 text-sm leading-relaxed">
+                    {exp.description}
+                  </p>
+                </StaggerItem>
+              ))}
+            </Stagger>
+          </section>
+        </StaggerItem>
+
+        <StaggerItem inView>
+          <section
+            aria-labelledby="tools-title"
+            className="border-border grid gap-8 border-y py-8 md:grid-cols-[0.7fr_1.3fr]"
+          >
+            <div>
+              <p className="text-on-bg-muted font-mono text-xs tracking-widest uppercase">
+                03 / Toolkit
+              </p>
+              <h2 id="tools-title" className="mt-3 text-2xl font-semibold tracking-tight">
+                Tools & technologies
+              </h2>
+              <p className="text-on-bg-secondary mt-2 max-w-xs text-sm leading-relaxed">
+                Click any tool to see how I use it in production and personal projects.
+              </p>
+            </div>
+            <Stagger inView staggerDelay={0.04} className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+              {TOOLS.map((tool) => (
+                <StaggerItem key={tool.name}>
+                  <ToolItem tool={tool} />
+                </StaggerItem>
+              ))}
+            </Stagger>
+          </section>
+        </StaggerItem>
+
+        <StaggerItem inView>
+          <section
+            aria-labelledby="credentials-title"
+            className="grid gap-8 md:grid-cols-[0.7fr_1.3fr]"
+          >
+            <div>
+              <p className="text-on-bg-muted font-mono text-xs tracking-widest uppercase">
+                04 / Credentials
+              </p>
+              <h2 id="credentials-title" className="mt-3 text-2xl font-semibold tracking-tight">
+                Education & Certifications
+              </h2>
+            </div>
+            <div className="flex flex-col gap-8">
+              <div>
+                <p className="text-on-bg-muted mb-3 font-mono text-xs tracking-wider uppercase">
+                  Education
+                </p>
+                <Stagger inView staggerDelay={0.12} className="flex flex-col">
+                  {EDUCATION.map((edu) => (
+                    <StaggerItem key={edu.degree} className="border-border border-t pt-4">
+                      <div className="flex flex-wrap items-baseline justify-between gap-2">
+                        <h3 className="text-on-bg text-base font-semibold">{edu.degree}</h3>
+                        <span className="text-on-bg-muted font-mono text-xs">{edu.period}</span>
+                      </div>
+                      <p className="text-on-bg-secondary mt-0.5 text-sm font-medium">
+                        {edu.institution} · {edu.location}
+                      </p>
+                      <p className="text-on-bg-secondary mt-2 text-sm leading-relaxed">
+                        {edu.description}
+                      </p>
+                    </StaggerItem>
+                  ))}
+                </Stagger>
+              </div>
+
+              <div>
+                <p className="text-on-bg-muted mb-3 font-mono text-xs tracking-wider uppercase">
+                  Certifications
+                </p>
+                <Stagger inView staggerDelay={0.1} className="flex flex-col">
+                  {CERTIFICATIONS.map((cert) => (
+                    <StaggerItem
+                      key={cert.title}
+                      className="border-border flex flex-wrap items-baseline justify-between gap-2 border-t py-3"
+                    >
+                      <div>
+                        <h4 className="text-on-bg text-sm font-medium">{cert.title}</h4>
+                        <p className="text-on-bg-secondary mt-0.5 text-xs">{cert.issuer}</p>
+                      </div>
+                      <span className="text-on-bg-muted font-mono text-xs">{cert.year}</span>
+                    </StaggerItem>
+                  ))}
+                </Stagger>
+              </div>
+            </div>
+          </section>
+        </StaggerItem>
+
+        <StaggerItem inView>
+          <section className="bg-bg-secondary border-border grid gap-6 border p-6 sm:p-8 md:grid-cols-[1fr_auto] md:items-end">
+            <div>
+              <p className="text-on-bg-muted font-mono text-xs tracking-widest uppercase">
+                Get in touch
+              </p>
+              <p className="mt-4 max-w-xl text-xl leading-relaxed font-medium tracking-tight">
+                Looking for a frontend or full-stack engineer for your team, or want to discuss a
+                project? Let's talk.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <Button
+                variant="primary"
+                render={<a href="mailto:contact@fadhln.id" />}
+                nativeButton={false}
+              >
+                Email me
+              </Button>
+              <Button variant="secondary" render={<Link href="/now" />} nativeButton={false}>
+                Check the Now page
+              </Button>
+            </div>
+          </section>
+        </StaggerItem>
+      </div>
+    </PageLayout>
+  );
+}
+
+export default About;

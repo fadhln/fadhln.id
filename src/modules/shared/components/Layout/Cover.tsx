@@ -1,6 +1,14 @@
 import { Dither } from "../Dither";
+import CoverTitle from "./CoverTitle";
 
-function Cover({ number, title }: { number?: string; title: string }) {
+type CoverProps = {
+  number?: string;
+  title: string;
+  animateTitle?: boolean;
+  titleStaggerDelay?: number;
+};
+
+function Cover({ number, title, animateTitle, titleStaggerDelay }: CoverProps) {
   return (
     <div className="text-on-primary bg-brand-600 relative h-64 w-full overflow-hidden">
       <div className="absolute top-0 left-1/2 h-full w-screen -translate-x-1/2">
@@ -21,7 +29,9 @@ function Cover({ number, title }: { number?: string; title: string }) {
           <span className="text-on-primary font-mono font-semibold">{number}</span>
         </div>
         <div className="flex flex-col justify-end">
-          <h1 className="font-semibold">{title}</h1>
+          <CoverTitle animate={animateTitle} staggerDelay={titleStaggerDelay}>
+            {title}
+          </CoverTitle>
         </div>
       </div>
     </div>
