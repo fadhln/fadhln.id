@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { getPostDate, getPosts } from "-/modules/posts/utils";
 import { PageLayout } from "-/modules/shared/components/Layout";
+import Stagger, { StaggerItem } from "-/modules/shared/components/Stagger";
 import Text from "-/modules/shared/components/Text";
 
 function Posts({ tag }: { tag?: string }) {
@@ -15,62 +16,73 @@ function Posts({ tag }: { tag?: string }) {
       cover={{
         number: "04",
         title: "Posts",
+        animateTitle: true,
+        titleStaggerDelay: 0.06,
       }}
     >
-      {tags.length > 0 && (
-        <nav aria-label="Filter posts by tag" className="mb-4 flex flex-wrap gap-2">
-          <Link
-            href="/posts"
-            className={`rounded-xs border px-3 py-1 text-xs transition-colors ${
-              !activeTag
-                ? "border-primary bg-primary text-on-primary"
-                : "border-border bg-bg-secondary text-on-bg-secondary hover:border-border-hover"
-            }`}
-          >
-            All
-          </Link>
-          {tags.map((postTag) => (
-            <Link
-              key={postTag}
-              href={`/posts?tag=${encodeURIComponent(postTag)}`}
-              className={`rounded-xs border px-3 py-1 text-xs transition-colors ${
-                activeTag === postTag
-                  ? "border-primary bg-primary text-on-primary"
-                  : "border-border bg-bg-secondary text-on-bg-secondary hover:border-border-hover"
-              }`}
-            >
-              {postTag}
-            </Link>
-          ))}
-        </nav>
-      )}
-      {filteredPosts.length ? (
-        <div className="flex flex-col">
-          {filteredPosts.map((post) => (
-            <Link
-              key={post.slug}
-              href={`/posts/${post.slug}`}
-              className="group border-border hover:bg-bg-secondary flex items-baseline justify-between gap-4 border-b py-4 transition-colors first:border-t"
-            >
-              <div>
-                <Text className="group-hover:text-on-bg">{post.title ?? post.slug}</Text>
-                {post.summary && (
-                  <Text className="text-on-bg-secondary mt-1 text-sm">{post.summary}</Text>
-                )}
-              </div>
-              <Text variant="label" className="shrink-0 text-xs">
-                {getPostDate(post.updated_at ?? post.created_at)}
+      <Stagger inView staggerDelay={0.08} className="flex flex-col gap-4">
+        {tags.length > 0 && (
+          <StaggerItem>
+            <nav aria-label="Filter posts by tag" className="flex flex-wrap gap-2">
+              <Link
+                href="/posts"
+                className={`rounded-xs border px-3 py-1 text-xs transition-colors ${
+                  !activeTag
+                    ? "border-primary bg-primary text-on-primary"
+                    : "border-border bg-bg-secondary text-on-bg-secondary hover:border-border-hover"
+                }`}
+              >
+                All
+              </Link>
+              {tags.map((postTag) => (
+                <Link
+                  key={postTag}
+                  href={`/posts?tag=${encodeURIComponent(postTag)}`}
+                  className={`rounded-xs border px-3 py-1 text-xs transition-colors ${
+                    activeTag === postTag
+                      ? "border-primary bg-primary text-on-primary"
+                      : "border-border bg-bg-secondary text-on-bg-secondary hover:border-border-hover"
+                  }`}
+                >
+                  {postTag}
+                </Link>
+              ))}
+            </nav>
+          </StaggerItem>
+        )}
+        {filteredPosts.length ? (
+          <StaggerItem>
+            <Stagger key={activeTag ?? "all"} inView staggerDelay={0.08} className="flex flex-col">
+              {filteredPosts.map((post) => (
+                <StaggerItem key={post.slug}>
+                  <Link
+                    href={`/posts/${post.slug}`}
+                    className="group border-border hover:bg-bg-secondary flex items-baseline justify-between gap-4 border-b py-4 transition-colors first:border-t"
+                  >
+                    <div>
+                      <Text className="group-hover:text-on-bg">{post.title ?? post.slug}</Text>
+                      {post.summary && (
+                        <Text className="text-on-bg-secondary mt-1 text-sm">{post.summary}</Text>
+                      )}
+                    </div>
+                    <Text variant="label" className="shrink-0 text-xs">
+                      {getPostDate(post.updated_at ?? post.created_at)}
+                    </Text>
+                  </Link>
+                </StaggerItem>
+              ))}
+            </Stagger>
+          </StaggerItem>
+        ) : (
+          <StaggerItem>
+            <div className="border-border bg-bg-secondary text-on-bg-secondary border p-6">
+              <Text>
+                {activeTag ? `No posts found for “${activeTag}”.` : "No posts published yet."}
               </Text>
-            </Link>
-          ))}
-        </div>
-      ) : (
-        <div className="border-border bg-bg-secondary text-on-bg-secondary border p-6">
-          <Text>
-            {activeTag ? `No posts found for “${activeTag}”.` : "No posts published yet."}
-          </Text>
-        </div>
-      )}
+            </div>
+          </StaggerItem>
+        )}
+      </Stagger>
     </PageLayout>
   );
 }

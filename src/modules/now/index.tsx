@@ -6,6 +6,7 @@ import path from "node:path";
 
 import ContentFooter from "../shared/components/ContentFooter";
 import { PageLayout } from "../shared/components/Layout";
+import Stagger, { StaggerItem } from "../shared/components/Stagger";
 import ErrorView from "../shared/components/View/ErrorView";
 import LoadingView from "../shared/components/View/LoadingView";
 import { components } from "../shared/components/mdx";
@@ -55,26 +56,34 @@ async function Now() {
       cover={{
         number: "02",
         title: "Now",
+        animateTitle: true,
+        titleStaggerDelay: 0.06,
       }}
     >
-      <Suspense fallback={<LoadingView />}>
-        <div className="text-on-bg-secondary flex flex-col gap-4 text-base tracking-tight">
-          {content}
-        </div>
-      </Suspense>
-      <ContentFooter
-        githubUrl={githubUrl}
-        createdAt={
-          frontmatter.created_at
-            ? formatDate(new Date(frontmatter.created_at), "date-month-year-short")
-            : undefined
-        }
-        updatedAt={
-          frontmatter.updated_at
-            ? formatDate(new Date(frontmatter.updated_at), "date-month-year-short")
-            : undefined
-        }
-      />
+      <Stagger className="flex flex-col gap-8" staggerDelay={0.12}>
+        <StaggerItem>
+          <Suspense fallback={<LoadingView />}>
+            <div className="text-on-bg-secondary flex flex-col gap-4 text-base tracking-tight">
+              {content}
+            </div>
+          </Suspense>
+        </StaggerItem>
+        <StaggerItem>
+          <ContentFooter
+            githubUrl={githubUrl}
+            createdAt={
+              frontmatter.created_at
+                ? formatDate(new Date(frontmatter.created_at), "date-month-year-short")
+                : undefined
+            }
+            updatedAt={
+              frontmatter.updated_at
+                ? formatDate(new Date(frontmatter.updated_at), "date-month-year-short")
+                : undefined
+            }
+          />
+        </StaggerItem>
+      </Stagger>
     </PageLayout>
   );
 }
