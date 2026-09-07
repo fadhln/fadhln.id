@@ -5,6 +5,7 @@ import { PersonIcon } from "@radix-ui/react-icons";
 
 import { Badge } from "../shared/components/Badge";
 import { Button } from "../shared/components/Button";
+import CopyEmail from "../shared/components/CopyEmail";
 import Stagger, { StaggerItem } from "../shared/components/Stagger";
 import ToolItem from "./components/ToolItem";
 import { CERTIFICATIONS, EDUCATION, EXPERIENCES, TOOLS } from "./data";
@@ -177,6 +178,7 @@ function About() {
 
         <StaggerItem inView>
           <section
+            id="resume"
             aria-labelledby="credentials-title"
             className="grid gap-8 md:grid-cols-[0.7fr_1.3fr]"
           >
@@ -187,6 +189,14 @@ function About() {
               <h2 id="credentials-title" className="mt-3 text-2xl font-semibold tracking-tight">
                 Education & Certifications
               </h2>
+              <a
+                href="https://linkedin.com/in/fadhln"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-on-bg-secondary hover:text-on-bg mt-3 inline-block text-sm underline underline-offset-2 transition-colors"
+              >
+                Get my full resume on LinkedIn →
+              </a>
             </div>
             <div className="flex flex-col gap-8">
               <div>
@@ -235,27 +245,21 @@ function About() {
         </StaggerItem>
 
         <StaggerItem inView>
-          <section className="bg-bg-secondary border-border grid gap-6 border p-6 sm:p-8 md:grid-cols-[1fr_auto] md:items-end">
+          <section className="bg-bg-secondary border-border grid gap-6 border p-4 md:grid-cols-[1fr_auto] md:items-end">
             <div>
               <p className="text-on-bg-muted font-mono text-xs tracking-widest uppercase">
                 Get in touch
               </p>
-              <p className="mt-4 max-w-xl text-xl leading-relaxed font-medium tracking-tight">
+              <p className="mt-2 max-w-xl text-xl leading-relaxed font-medium tracking-tight">
                 Looking for a frontend or full-stack engineer for your team, or want to discuss a
                 project? Let's talk.
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
-              <Button
-                variant="primary"
-                render={<a href="mailto:contact@fadhln.id" />}
-                nativeButton={false}
-              >
-                Email me
+              <Button variant="primary" render={<Link href="/contact" />} nativeButton={false}>
+                Contact me
               </Button>
-              <Button variant="secondary" render={<Link href="/now" />} nativeButton={false}>
-                Check the Now page
-              </Button>
+              <CopyEmail />
             </div>
           </section>
         </StaggerItem>

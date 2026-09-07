@@ -1,10 +1,10 @@
 import Link from "next/link";
 
 import { Button } from "../shared/components/Button";
+import CopyEmail from "../shared/components/CopyEmail";
 import { PageLayout } from "../shared/components/Layout";
 import Stagger, { StaggerItem } from "../shared/components/Stagger";
 import BitsSection from "./components/BitsSection";
-import CopyEmail from "./components/CopyEmail";
 import PostsSection from "./components/PostsSection";
 
 function Home() {

@@ -6,21 +6,13 @@ import { ActionSwapButton, type ActionSwapItem } from "-/modules/shared/componen
 import { CheckIcon, CopyIcon } from "@radix-ui/react-icons";
 
 const EMAIL = "contact@fadhln.id";
-const RESET_DELAY = 1000;
+const RESET_DELAY = 1_000;
 
 type ItemId = "copy" | "success";
 
 const ITEMS: ActionSwapItem<ItemId>[] = [
-  {
-    id: "copy",
-    label: "E-Mail",
-    icon: <CopyIcon />,
-  },
-  {
-    id: "success",
-    label: "Copied",
-    icon: <CheckIcon />,
-  },
+  { id: "copy", label: "E-Mail", icon: <CopyIcon /> },
+  { id: "success", label: "Copied", icon: <CheckIcon /> },
 ];
 
 function CopyEmail() {
@@ -28,7 +20,7 @@ function CopyEmail() {
   const timeoutRef = useRef<ReturnType<typeof setTimeout>>(undefined);
 
   const handleClick = useCallback(() => {
-    navigator.clipboard.writeText(EMAIL);
+    void navigator.clipboard.writeText(EMAIL);
     setValue("success");
     clearTimeout(timeoutRef.current);
     timeoutRef.current = setTimeout(() => setValue("copy"), RESET_DELAY);
