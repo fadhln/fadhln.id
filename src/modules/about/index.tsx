@@ -127,12 +127,11 @@ function About() {
                 Where I have worked
               </h2>
               <a
-                href="https://linkedin.com/in/fadhln"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/CV_Muhammad_Fadhlan.pdf"
+                download="CV_Muhammad_Fadhlan.pdf"
                 className="text-on-bg-secondary hover:text-on-bg mt-3 inline-block text-sm underline underline-offset-2 transition-colors"
               >
-                Get my full resume on LinkedIn →
+                Download my resume (PDF) →
               </a>
             </div>
             <Stagger inView staggerDelay={0.12} className="flex flex-col">
